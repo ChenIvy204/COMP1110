@@ -19,4 +19,4 @@ This project is the implementation of the “Personal Budget and Spending Assist
 2. Open a terminal (or command prompt) and navigate to the project folder.
 3. Run the following command:
    ```bash
-   python main.py
+   python app.py
