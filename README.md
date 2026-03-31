@@ -1,6 +1,4 @@
-# COMP1110
-
-# Everyday Finance · Personal Budget Assistant
+# COMP1110 - Personal Budget Assistant
 
 A Python Tkinter‑based graphical tool for managing personal finances. It supports multiple accounts, transaction logging, category analysis, monthly forecasting, and CSV/JSON import/export.
 
