@@ -303,6 +303,14 @@ class FinanceApp:
         self.insight_body = ttk.Frame(self.insight_frame)
         self.insight_body.pack(fill=tk.BOTH, expand=True, pady=6)
 
+        # Spending Trend chart (right panel)
+        trend_frame = ttk.Frame(analytics, padding=10, borderwidth=1, relief=tk.GROOVE)
+        trend_frame.pack(side=tk.LEFT, fill=tk.BOTH, expand=True, padx=(6, 0))
+        ttk.Label(trend_frame, text="Spending Trend", style="Header.TLabel").pack(anchor="w")
+        self.trend_canvas = tk.Canvas(trend_frame, bg="#0f1629", highlightthickness=0)
+        self.trend_canvas.pack(fill=tk.BOTH, expand=True, pady=(4, 0))
+        self.trend_canvas.bind("<Configure>", lambda e: self.render_trend(self.filtered_txs()))
+
         # Transaction list + form container so the form stays visible on smaller windows
         lower = ttk.Frame(self.root, padding=0)
         lower.pack(fill=tk.BOTH, expand=True, padx=8, pady=4)
@@ -327,7 +335,7 @@ class FinanceApp:
         self.var_type = tk.StringVar(value="expense")
         self.var_category = tk.StringVar(value="Meals")
         self.var_desc = tk.StringVar()
-        self.var_method = tk.StringVar(value="Manual")
+
 
         ttk.Label(form, text="Date YYYY-MM-DD").grid(row=0, column=0, sticky="w")
         ttk.Entry(form, textvariable=self.var_date, width=12).grid(row=1, column=0, padx=4)
@@ -344,10 +352,7 @@ class FinanceApp:
         ttk.Label(form, text="Description").grid(row=0, column=4, sticky="w")
         ttk.Entry(form, textvariable=self.var_desc, width=28).grid(row=1, column=4, padx=4)
 
-        ttk.Label(form, text="Method").grid(row=0, column=5, sticky="w")
-        ttk.Entry(form, textvariable=self.var_method, width=12).grid(row=1, column=5, padx=4)
-
-        ttk.Button(form, text="Add Transaction", command=self.add_transaction, style="Accent.TButton").grid(row=1, column=6, padx=8)
+        ttk.Button(form, text="Add Transaction", command=self.add_transaction, style="Accent.TButton").grid(row=1, column=5, padx=8)
 
     def current_txs(self) -> List[Transaction]:
         return self.accounts[self.active_account.get()]
@@ -383,6 +388,7 @@ class FinanceApp:
         self.account_combo["values"] = list(self.accounts.keys())
         self.render_categories(txs)
         self.render_insights(txs)
+        self.render_trend(txs)
 
     def refresh_month_options(self) -> None:
         txs = self.current_txs()
@@ -414,9 +420,53 @@ class FinanceApp:
 
     def render_insights(self, txs: List[Transaction]) -> None:
         self.clear_frame(self.insight_body)
+
+        # Spending alert banner
+        alert = self._get_spending_alert(self.current_txs())
+        if alert:
+            warn = ttk.Frame(self.insight_body, padding=(8, 6, 8, 6))
+            warn.pack(fill=tk.X, pady=(0, 4))
+            ttk.Label(warn, text=f"⚠  Spending Alert — {alert['month']}",
+                      foreground="#ffb347", font=("Helvetica Neue", 11, "bold")).pack(anchor="w")
+            ttk.Label(warn,
+                      text=f"This month: {format_currency(alert['cur'])}   Historical avg: {format_currency(alert['avg'])}",
+                      foreground="#ffb347").pack(anchor="w")
+            if alert["over_cats"]:
+                ttk.Label(warn, text="Abnormal categories:",
+                          foreground="#ffb347", font=("Helvetica Neue", 10, "bold")).pack(anchor="w", pady=(4, 0))
+                for cat, val, excess in alert["over_cats"]:
+                    ttk.Label(warn,
+                              text=f"  • {cat}  {format_currency(val)}  (+{format_currency(excess)} above avg)",
+                              foreground="#ff9999").pack(anchor="w")
+            ttk.Separator(self.insight_body, orient="horizontal").pack(fill=tk.X, pady=(4, 6))
+
+        total_income = sum(float(t.get("amount", 0)) for t in txs if t.get("type") == "income")
+        total_expense = sum(float(t.get("amount", 0)) for t in txs if t.get("type") == "expense")
+        net = total_income - total_expense
+
+        # Income / Expense summary block
+        summary_block = ttk.Frame(self.insight_body, padding=8)
+        summary_block.pack(fill=tk.X, pady=(0, 6))
+        ttk.Label(summary_block, text="Income vs Expense", font=("Helvetica Neue", 12, "bold")).pack(anchor="w")
+        inc_row = ttk.Frame(summary_block)
+        inc_row.pack(fill=tk.X, pady=2)
+        ttk.Label(inc_row, text="Total Income:", width=16, anchor="w").pack(side=tk.LEFT)
+        ttk.Label(inc_row, text=format_currency(total_income), foreground="#3fe0a8", font=("Helvetica Neue", 12, "bold")).pack(side=tk.LEFT)
+        exp_row = ttk.Frame(summary_block)
+        exp_row.pack(fill=tk.X, pady=2)
+        ttk.Label(exp_row, text="Total Expense:", width=16, anchor="w").pack(side=tk.LEFT)
+        ttk.Label(exp_row, text=format_currency(total_expense), foreground="#ff6b6b", font=("Helvetica Neue", 12, "bold")).pack(side=tk.LEFT)
+        net_row = ttk.Frame(summary_block)
+        net_row.pack(fill=tk.X, pady=2)
+        ttk.Label(net_row, text="Net:", width=16, anchor="w").pack(side=tk.LEFT)
+        net_color = "#3fe0a8" if net >= 0 else "#ff6b6b"
+        ttk.Label(net_row, text=format_currency(net), foreground=net_color, font=("Helvetica Neue", 12, "bold")).pack(side=tk.LEFT)
+
+        ttk.Separator(self.insight_body, orient="horizontal").pack(fill=tk.X, pady=6)
+
         expense = [t for t in txs if t.get("type") == "expense"]
         if not expense:
-            ttk.Label(self.insight_body, text="No data", foreground="#9bb0d1").pack(anchor="w")
+            ttk.Label(self.insight_body, text="No expense data", foreground="#9bb0d1").pack(anchor="w")
             return
         top = category_breakdown(expense)
         top_cat, top_val = top[0]
@@ -431,6 +481,188 @@ class FinanceApp:
             pill = ttk.Frame(self.insight_body, padding=8)
             pill.pack(fill=tk.X, pady=4)
             ttk.Label(pill, text=text).pack(anchor="w")
+
+    def _get_spending_alert(self, all_txs: List[Transaction]):
+        """Return alert info dict if current/selected month expense exceeds historical average."""
+        today = date.today()
+        sel = self.month_filter.get()
+        check_month = sel if (sel != "All Months" and sel) else today.strftime("%Y-%m")
+
+        monthly: Dict[str, float] = {}
+        for t in all_txs:
+            if t.get("type") != "expense":
+                continue
+            mk = month_key(str(t.get("date", "")))
+            if mk:
+                monthly[mk] = monthly.get(mk, 0) + float(t.get("amount", 0))
+
+        if check_month not in monthly or len(monthly) < 2:
+            return None
+
+        other = {k: v for k, v in monthly.items() if k < check_month}
+        if not other:
+            return None
+        avg = sum(other.values()) / len(other)
+        cur = monthly[check_month]
+        if cur <= avg:
+            return None
+
+        # Per-category breakdown for each month
+        cat_by_month: Dict[str, Dict[str, float]] = {}
+        for t in all_txs:
+            if t.get("type") != "expense":
+                continue
+            mk = month_key(str(t.get("date", "")))
+            if not mk:
+                continue
+            cat = str(t.get("category", "Other"))
+            if mk not in cat_by_month:
+                cat_by_month[mk] = {}
+            cat_by_month[mk][cat] = cat_by_month[mk].get(cat, 0) + float(t.get("amount", 0))
+
+        n = len(other)
+        cat_avg: Dict[str, float] = {}
+        for m in other:
+            for cat, val in cat_by_month.get(m, {}).items():
+                cat_avg[cat] = cat_avg.get(cat, 0) + val
+        cat_avg = {k: v / n for k, v in cat_avg.items()}
+
+        check_cats = cat_by_month.get(check_month, {})
+        over_cats = []
+        for cat, val in check_cats.items():
+            excess = val - cat_avg.get(cat, 0)
+            if excess > 0:
+                over_cats.append((cat, val, excess))
+        over_cats.sort(key=lambda x: x[2], reverse=True)
+
+        return {
+            "month": check_month,
+            "cur": cur,
+            "avg": avg,
+            "over_cats": over_cats,
+        }
+
+    def render_trend(self, txs: List[Transaction]) -> None:
+        canvas = self.trend_canvas
+        canvas.delete("all")
+        W = canvas.winfo_width()
+        H = canvas.winfo_height()
+        if W <= 1:
+            self.root.after(50, lambda: self.render_trend(txs))
+            return
+
+        sel = self.month_filter.get()
+        if sel != "All Months" and sel:
+            self._render_trend_bar(txs, W, H, sel)
+        else:
+            self._render_trend_line(txs, W, H)
+
+    def _render_trend_bar(self, txs: List[Transaction], W: int, H: int, month: str) -> None:
+        canvas = self.trend_canvas
+        total_income = sum(float(t.get("amount", 0)) for t in txs if t.get("type") == "income")
+        total_expense = sum(float(t.get("amount", 0)) for t in txs if t.get("type") == "expense")
+
+        if total_income == 0 and total_expense == 0:
+            canvas.create_text(W // 2, H // 2, text="No data for this month",
+                               fill="#9bb0d1", font=("Helvetica Neue", 12))
+            return
+
+        pad_l, pad_r, pad_t, pad_b = 68, 20, 20, 36
+        ch = H - pad_t - pad_b
+        cw = W - pad_l - pad_r
+        max_val = max(total_income, total_expense, 1)
+
+        # Grid lines & Y labels
+        for i in range(5):
+            gy = pad_t + ch - (i / 4) * ch
+            gv = (i / 4) * max_val
+            canvas.create_line(pad_l, gy, W - pad_r, gy, fill="#1f2d4a", dash=(4, 4))
+            canvas.create_text(pad_l - 6, gy, text=f"{gv:.0f}",
+                               anchor="e", fill="#9bb0d1", font=("Helvetica Neue", 9))
+
+        bar_w = min(cw // 4, 80)
+        gap = cw // 3
+
+        bars = [
+            (pad_l + gap - bar_w // 2, total_expense, "#ff6b6b", "Expense"),
+            (pad_l + gap * 2 - bar_w // 2, total_income, "#3fe0a8", "Income"),
+        ]
+        for bx, val, color, label in bars:
+            bh = (val / max_val) * ch
+            by = pad_t + ch - bh
+            canvas.create_rectangle(bx, by, bx + bar_w, pad_t + ch, fill=color, outline="")
+            canvas.create_text(bx + bar_w // 2, pad_t + ch + 12, text=label,
+                               fill="#9bb0d1", font=("Helvetica Neue", 10))
+            canvas.create_text(bx + bar_w // 2, by - 10, text=f"{val:.0f}",
+                               fill=color, font=("Helvetica Neue", 9, "bold"))
+
+    def _render_trend_line(self, txs: List[Transaction], W: int, H: int) -> None:
+        canvas = self.trend_canvas
+
+        monthly_expense: Dict[str, float] = {}
+        monthly_income: Dict[str, float] = {}
+        for t in txs:
+            mk = month_key(str(t.get("date", "")))
+            if not mk:
+                continue
+            if t.get("type") == "expense":
+                monthly_expense[mk] = monthly_expense.get(mk, 0) + float(t.get("amount", 0))
+            elif t.get("type") == "income":
+                monthly_income[mk] = monthly_income.get(mk, 0) + float(t.get("amount", 0))
+
+        all_months = sorted(set(list(monthly_expense.keys()) + list(monthly_income.keys())))
+        if not all_months:
+            canvas.create_text(W // 2, H // 2, text="No data to display",
+                               fill="#9bb0d1", font=("Helvetica Neue", 12))
+            return
+
+        pad_l, pad_r, pad_t, pad_b = 68, 20, 16, 36
+        cw = W - pad_l - pad_r
+        ch = H - pad_t - pad_b
+        n = len(all_months)
+
+        exp_vals = [monthly_expense.get(m, 0) for m in all_months]
+        inc_vals = [monthly_income.get(m, 0) for m in all_months]
+        max_val = max(max(exp_vals + inc_vals), 1)
+
+        # Grid lines & Y labels
+        for i in range(5):
+            gy = pad_t + ch - (i / 4) * ch
+            gv = (i / 4) * max_val
+            canvas.create_line(pad_l, gy, W - pad_r, gy, fill="#1f2d4a", dash=(4, 4))
+            canvas.create_text(pad_l - 6, gy, text=f"{gv:.0f}",
+                               anchor="e", fill="#9bb0d1", font=("Helvetica Neue", 9))
+
+        xs = [pad_l + (i / max(n - 1, 1)) * cw for i in range(n)]
+
+        for i, (m, x) in enumerate(zip(all_months, xs)):
+            label = m[5:]
+            if i == 0 or all_months[i][:4] != all_months[i - 1][:4]:
+                label = m
+            canvas.create_text(x, H - pad_b + 10, text=label,
+                               fill="#9bb0d1", font=("Helvetica Neue", 9))
+
+        def draw_line(vals: List[float], color: str) -> None:
+            ys = [pad_t + ch - (v / max_val) * ch for v in vals]
+            if n > 1:
+                coords: List[float] = []
+                for x, y in zip(xs, ys):
+                    coords += [x, y]
+                canvas.create_line(*coords, fill=color, width=2)
+            for x, y, v in zip(xs, ys, vals):
+                if v > 0:
+                    canvas.create_oval(x - 4, y - 4, x + 4, y + 4, fill=color, outline=color)
+
+        draw_line(inc_vals, "#3fe0a8")
+        draw_line(exp_vals, "#ff6b6b")
+
+        lx = W - pad_r - 140
+        canvas.create_rectangle(lx, 6, lx + 14, 16, fill="#ff6b6b", outline="")
+        canvas.create_text(lx + 18, 11, text="Expense", anchor="w",
+                           fill="#d9e5ff", font=("Helvetica Neue", 9))
+        canvas.create_rectangle(lx + 72, 6, lx + 86, 16, fill="#3fe0a8", outline="")
+        canvas.create_text(lx + 90, 11, text="Income", anchor="w",
+                           fill="#d9e5ff", font=("Helvetica Neue", 9))
 
     def add_transaction(self) -> None:
         try:
@@ -448,7 +680,7 @@ class FinanceApp:
             "type": self.var_type.get(),
             "category": self.var_category.get(),
             "description": self.var_desc.get().strip() or "Manual",
-            "method": self.var_method.get().strip() or "Manual",
+            "method": "Manual",
         })
         self.var_amount.set("")
         self.var_desc.set("")
