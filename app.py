@@ -451,6 +451,38 @@ def summarize(txs: List[Transaction], month_selector: str = "All Months") -> Dic
     )
     daily_avg = spent_month / max(day, 1)
     projected = daily_avg * dim
+
+    # Top-3 expense categories (normalized)
+    cat_agg: Dict[str, float] = {}
+    for t in txs:
+        if tx_kind(t) != "expense":
+            continue
+        cat = normalize_category_name(str(t.get("category", "Other"))) or "Other"
+        cat_agg[cat] = cat_agg.get(cat, 0) + float(t.get("amount", 0))
+    top_categories = sorted(cat_agg.items(), key=lambda kv: kv[1], reverse=True)[:3]
+
+    # Weekly statistics: group expenses by ISO week, compute this-week and avg
+    weekly_buckets: Dict[Tuple[int, int], float] = {}
+    latest_date: date | None = None
+    for t in txs:
+        if tx_kind(t) != "expense":
+            continue
+        try:
+            d = parse_date_safe(str(t.get("date", "")))
+        except Exception:
+            continue
+        iso = d.isocalendar()
+        key = (iso[0], iso[1])
+        weekly_buckets[key] = weekly_buckets.get(key, 0) + float(t.get("amount", 0))
+        if latest_date is None or d > latest_date:
+            latest_date = d
+    if latest_date is not None:
+        latest_iso = latest_date.isocalendar()
+        weekly_total = weekly_buckets.get((latest_iso[0], latest_iso[1]), 0.0)
+    else:
+        weekly_total = 0.0
+    weekly_avg = sum(weekly_buckets.values()) / len(weekly_buckets) if weekly_buckets else 0.0
+
     return {
         "spent": spent,
         "income": income,
@@ -461,6 +493,9 @@ def summarize(txs: List[Transaction], month_selector: str = "All Months") -> Dic
         "projected": projected,
         "day": day,
         "dim": dim,
+        "top_categories": top_categories,
+        "weekly_total": weekly_total,
+        "weekly_avg": weekly_avg,
     }
 
 
@@ -824,8 +859,24 @@ class FinanceApp:
         top_cat, top_val = top[0]
         avg_ticket = sum(t["amount"] for t in expense) / max(len(expense), 1)
 
+        # Top-3 categories from summarize()
+        s = summarize(txs, month_selector=self.month_filter.get())
+        top3 = s.get("top_categories", [])
+        if top3:
+            top3_text = "Top 3 categories: " + ", ".join(
+                f"{cat} ({format_currency(amt)})" for cat, amt in top3
+            )
+        else:
+            top3_text = "Top 3 categories: N/A"
+
+        weekly_text = (
+            f"This week: {format_currency(s.get('weekly_total', 0))}  \u00b7  "
+            f"Avg/week: {format_currency(s.get('weekly_avg', 0))}"
+        )
+
         pills = [
-            f"Top spending category: {top_cat} ({format_currency(top_val)})",
+            top3_text,
+            weekly_text,
             f"Average expense: {format_currency(avg_ticket)}",
             f"Records: {len(txs)} entries",
         ]
