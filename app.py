@@ -56,7 +56,16 @@ ImportStats = Dict[str, int]
 
 MISSING_CATEGORY_LABEL = "Missing Category [Review]"
 MISSING_FLAGS_KEY = "missing_flags"
-ALERT_DEVIATION_RATIO = 0.15
+OVERALL_ALERT_THRESHOLD = 0.15
+
+CATEGORY_ALERT_THRESHOLDS: Dict[str, float] = {
+    "Meals": 0.12,         # high-frequency rigid spending, low variance
+    "Transport": 0.15,     # commute is relatively fixed
+    "Shopping": 0.25,      # highly elastic, impulse-buy prone
+    "Accommodation": 0.10, # rent is mostly fixed
+    "Fun": 0.20,           # elastic leisure spending
+    "Other": 0.08,         # phone bills & subscriptions are mostly fixed
+}
 
 HEADER_ALIASES: Dict[str, List[str]] = {
     "date": ["date", "transaction_date"],
@@ -66,6 +75,44 @@ HEADER_ALIASES: Dict[str, List[str]] = {
     "description": ["description", "memo", "details", "note"],
     "method": ["method", "payment", "payment_method"],
 }
+
+EXCHANGE_RATE_FILE = "hkd2cny_2026_q1.csv"
+
+
+def load_exchange_rates(path: str) -> Dict[str, float]:
+    """Load HKD→CNY daily rates from CSV. Returns {YYYY-MM-DD: rate}."""
+    rates: Dict[str, float] = {}
+    try:
+        with open(path, newline="", encoding="utf-8") as f:
+            reader = csv.reader(f)
+            header = next(reader, None)
+            for row in reader:
+                if not row or len(row) < 2:
+                    continue
+                raw_date = row[0].strip()
+                raw_rate = row[1].strip()
+                try:
+                    d = parse_date_safe(raw_date)
+                    rates[d.strftime("%Y-%m-%d")] = float(raw_rate)
+                except Exception:
+                    continue
+    except Exception as exc:
+        print(f"[warning] Could not load exchange rates from {path}: {exc}")
+    return rates
+
+
+def get_average_rate(rates: Dict[str, float]) -> float:
+    """Return average of all loaded exchange rates, or 0.0 if empty."""
+    if not rates:
+        return 0.0
+    return sum(rates.values()) / len(rates)
+
+
+def hkd_to_cny(amount_hkd: float, rate: float) -> float:
+    """Convert HKD amount to CNY using the given rate."""
+    if rate == 0:
+        return 0.0
+    return amount_hkd * rate
 
 
 def format_currency(amount: float) -> str:
@@ -443,6 +490,9 @@ class FinanceApp:
         self.forecast_var = tk.StringVar()
         self.visible_tx_indices: List[int] = []
 
+        self.exchange_rates = load_exchange_rates(EXCHANGE_RATE_FILE)
+        self.avg_rate = get_average_rate(self.exchange_rates)
+
         self._setup_styles()
         self._build_ui()
         self.refresh()
@@ -592,6 +642,15 @@ class FinanceApp:
 
         ttk.Button(form, text="Add Transaction", command=self.add_transaction, style="Accent.TButton").grid(row=1, column=4, padx=8)
 
+        # Exchange rate status bar
+        if self.avg_rate > 0:
+            rate_text = (f"Exchange rate (avg Q1 2026): 1 HKD \u2248 \u00a5{self.avg_rate:.4f} CNY "
+                         f"\u00b7 Source: {EXCHANGE_RATE_FILE}")
+        else:
+            rate_text = "Exchange rate data unavailable"
+        ttk.Label(self.root, text=rate_text, foreground="#888888",
+                  font=("Helvetica Neue", 9), background="#0f1629").pack(side=tk.BOTTOM, fill=tk.X, padx=10, pady=(0, 4))
+
     def current_txs(self) -> List[Transaction]:
         return self.accounts[self.active_account.get()]
 
@@ -698,22 +757,21 @@ class FinanceApp:
         if alert:
             warn = ttk.Frame(self.insight_body, padding=(8, 6, 8, 6))
             warn.pack(fill=tk.X, pady=(0, 4))
-            ttk.Label(warn, text=f"⚠  Spending Alert — {alert['month']}",
+            ttk.Label(warn, text=f"Spending Alert ({alert['month']})",
                       foreground="#ffb347", font=("Helvetica Neue", 11, "bold")).pack(anchor="w")
-            ttk.Label(warn,
-                      text=(
-                          f"This month: {format_currency(alert['cur'])}   Historical avg: {format_currency(alert['avg'])}   "
-                          f"{alert['direction'].title()} avg by {format_currency(alert['delta'])} ({alert['delta_pct']:.0%})"
-                      ),
-                      foreground="#ffb347").pack(anchor="w")
+            if alert["avg"] > 0:
+                ttk.Label(warn,
+                          text=(
+                              f"This month: {format_currency(alert['cur'])}   Historical avg: {format_currency(alert['avg'])}   "
+                              f"{alert['direction'].title()} avg by {format_currency(alert['delta'])} ({alert['delta_pct']:.0%})"
+                          ),
+                          foreground="#ffb347").pack(anchor="w")
             if alert["category_alerts"]:
-                ttk.Label(warn, text="Abnormal categories:",
-                          foreground="#ffb347", font=("Helvetica Neue", 10, "bold")).pack(anchor="w", pady=(4, 0))
-                for cat, val, delta, direction, delta_pct in alert["category_alerts"]:
+                for cat, val, delta, direction, delta_pct, threshold in alert["category_alerts"]:
                     ttk.Label(warn,
                               text=(
-                                  f"  • {cat}  {format_currency(val)}  "
-                                  f"({direction} avg by {format_currency(abs(delta))}, {abs(delta_pct):.0%})"
+                                  f"  \u2022 {cat}: {format_currency(val)}  "
+                                  f"(+{delta_pct:.0%}, threshold +{threshold:.0%})"
                               ),
                               foreground="#ff9999").pack(anchor="w")
             ttk.Separator(self.insight_body, orient="horizontal").pack(fill=tk.X, pady=(4, 6))
@@ -726,19 +784,19 @@ class FinanceApp:
         summary_block = ttk.Frame(self.insight_body, padding=8)
         summary_block.pack(fill=tk.X, pady=(0, 6))
         ttk.Label(summary_block, text="Income vs Expense", font=("Helvetica Neue", 12, "bold")).pack(anchor="w")
-        inc_row = ttk.Frame(summary_block)
-        inc_row.pack(fill=tk.X, pady=2)
-        ttk.Label(inc_row, text="Total Income:", width=16, anchor="w").pack(side=tk.LEFT)
-        ttk.Label(inc_row, text=format_currency(total_income), foreground="#3fe0a8", font=("Helvetica Neue", 12, "bold")).pack(side=tk.LEFT)
-        exp_row = ttk.Frame(summary_block)
-        exp_row.pack(fill=tk.X, pady=2)
-        ttk.Label(exp_row, text="Total Expense:", width=16, anchor="w").pack(side=tk.LEFT)
-        ttk.Label(exp_row, text=format_currency(total_expense), foreground="#ff6b6b", font=("Helvetica Neue", 12, "bold")).pack(side=tk.LEFT)
-        net_row = ttk.Frame(summary_block)
-        net_row.pack(fill=tk.X, pady=2)
-        ttk.Label(net_row, text="Net:", width=16, anchor="w").pack(side=tk.LEFT)
-        net_color = "#3fe0a8" if net >= 0 else "#ff6b6b"
-        ttk.Label(net_row, text=format_currency(net), foreground=net_color, font=("Helvetica Neue", 12, "bold")).pack(side=tk.LEFT)
+        rate = self.avg_rate
+        for label, value, color in [
+            ("Total Income:", total_income, "#3fe0a8"),
+            ("Total Expense:", total_expense, "#ff6b6b"),
+            ("Net:", net, "#3fe0a8" if net >= 0 else "#ff6b6b"),
+        ]:
+            row_frame = ttk.Frame(summary_block)
+            row_frame.pack(fill=tk.X, pady=2)
+            ttk.Label(row_frame, text=label, width=16, anchor="w").pack(side=tk.LEFT)
+            ttk.Label(row_frame, text=f"{format_currency(value)} HKD", foreground=color, font=("Helvetica Neue", 12, "bold")).pack(side=tk.LEFT)
+            if rate > 0:
+                cny = hkd_to_cny(value, rate)
+                ttk.Label(row_frame, text=f"  (\u2248 \u00a5{cny:.2f} CNY)", foreground="#9bb0d1", font=("Helvetica Neue", 10)).pack(side=tk.LEFT)
 
         ttk.Separator(self.insight_body, orient="horizontal").pack(fill=tk.X, pady=6)
 
@@ -761,38 +819,19 @@ class FinanceApp:
             ttk.Label(pill, text=text).pack(anchor="w")
 
     def _get_spending_alert(self, all_txs: List[Transaction]):
-        """Return alert info when monthly expense deviates from historical average by +/-15% or more."""
-        today = date.today()
+        """Return alert info when monthly expense deviates from historical average.
+
+        Uses per-category thresholds from CATEGORY_ALERT_THRESHOLDS and only
+        alerts on upward deviations (spending more than usual).  The comparison
+        baseline for each category is the average of all *other* months
+        (excluding check_month).  A global overall check at 15% is kept as a
+        fallback.
+        """
         sel = self.month_filter.get()
-        check_month = sel if (sel != "All Months" and sel) else today.strftime("%Y-%m")
 
+        # Aggregate total expense per month
         monthly: Dict[str, float] = {}
-        for t in all_txs:
-            if tx_kind(t) != "expense":
-                continue
-            mk = month_key(str(t.get("date", "")))
-            if mk:
-                monthly[mk] = monthly.get(mk, 0) + float(t.get("amount", 0))
-
-        if check_month not in monthly or len(monthly) < 2:
-            return None
-
-        other = {k: v for k, v in monthly.items() if k < check_month}
-        if not other:
-            return None
-        avg = sum(other.values()) / len(other)
-        cur = monthly[check_month]
-        delta = cur - avg
-        if avg == 0:
-            if cur == 0:
-                return None
-            delta_pct = 1.0
-        else:
-            delta_pct = delta / avg
-        if abs(delta_pct) < ALERT_DEVIATION_RATIO:
-            return None
-
-        # Per-category breakdown for each month
+        # Aggregate expense per (month, normalized_category)
         cat_by_month: Dict[str, Dict[str, float]] = {}
         for t in all_txs:
             if tx_kind(t) != "expense":
@@ -800,38 +839,79 @@ class FinanceApp:
             mk = month_key(str(t.get("date", "")))
             if not mk:
                 continue
-            cat = str(t.get("category", "Other"))
+            amount = float(t.get("amount", 0))
+            monthly[mk] = monthly.get(mk, 0) + amount
+            cat = normalize_category_name(str(t.get("category", "Other"))) or "Other"
             if mk not in cat_by_month:
                 cat_by_month[mk] = {}
-            cat_by_month[mk][cat] = cat_by_month[mk].get(cat, 0) + float(t.get("amount", 0))
+            cat_by_month[mk][cat] = cat_by_month[mk].get(cat, 0) + amount
 
-        n = len(other)
-        cat_avg: Dict[str, float] = {}
-        for m in other:
-            for cat, val in cat_by_month.get(m, {}).items():
-                cat_avg[cat] = cat_avg.get(cat, 0) + val
-        cat_avg = {k: v / n for k, v in cat_avg.items()}
+        if not monthly:
+            return None
 
+        # Determine check_month: explicit selection, or latest month in data
+        if sel and sel != "All Months":
+            check_month = sel
+        else:
+            check_month = max(monthly.keys())
+
+        if check_month not in monthly:
+            return None
+
+        # --- Overall (total) alert ---------------------------------------------------
+        other_months = {k: v for k, v in monthly.items() if k != check_month}
+        cur = monthly[check_month]
+        overall_triggered = False
+        avg = 0.0
+        delta = 0.0
+        delta_pct = 0.0
+        direction = "above"
+        if other_months:
+            avg = sum(other_months.values()) / len(other_months)
+            delta = cur - avg
+            if avg > 0:
+                delta_pct = delta / avg
+            elif cur > 0:
+                delta_pct = 1.0
+            direction = "above" if delta > 0 else "below"
+            if delta_pct > OVERALL_ALERT_THRESHOLD:
+                overall_triggered = True
+
+        # --- Per-category alerts -----------------------------------------------------
         check_cats = cat_by_month.get(check_month, {})
-        category_alerts = []
+        category_alerts: List[Tuple[str, float, float, str, float, float]] = []
         for cat, val in check_cats.items():
-            avg_val = cat_avg.get(cat, 0)
-            cat_delta = val - avg_val
-            if avg_val == 0:
-                if val == 0:
+            # Collect this category's values in all other months
+            other_vals = [
+                cat_by_month[m].get(cat, 0)
+                for m in monthly
+                if m != check_month and cat in cat_by_month.get(m, {})
+            ]
+            if not other_vals:
+                continue  # only one month of data for this category — skip
+            cat_avg = sum(other_vals) / len(other_vals)
+            if cat_avg <= 0:
+                if val > 0:
+                    cat_delta_pct = 1.0
+                else:
                     continue
-                cat_delta_pct = 1.0
             else:
-                cat_delta_pct = cat_delta / avg_val
-            if abs(cat_delta_pct) >= ALERT_DEVIATION_RATIO:
+                cat_delta_pct = (val - cat_avg) / cat_avg
+            threshold = CATEGORY_ALERT_THRESHOLDS.get(cat, OVERALL_ALERT_THRESHOLD)
+            # Only alert on upward deviation (spending more than usual)
+            if cat_delta_pct > threshold:
                 category_alerts.append((
                     cat,
                     val,
-                    cat_delta,
-                    "above" if cat_delta > 0 else "below",
+                    val - cat_avg,
+                    "above",
                     cat_delta_pct,
+                    threshold,
                 ))
         category_alerts.sort(key=lambda item: abs(item[2]), reverse=True)
+
+        if not overall_triggered and not category_alerts:
+            return None
 
         return {
             "month": check_month,
@@ -839,7 +919,7 @@ class FinanceApp:
             "avg": avg,
             "delta": abs(delta),
             "delta_pct": abs(delta_pct),
-            "direction": "above" if delta > 0 else "below",
+            "direction": direction,
             "category_alerts": category_alerts,
         }
 

@@ -1,309 +1,317 @@
-transaction_id,date,amount in HKD,category,description,,Total Spending,,
-1,2026/1/1,$188.00 ,Food,Dinner with friends (group meal),,"$15,318.00 ",,
-2,2026/1/1,$18.00 ,Transport,MTR campus to home,,,,
-3,2026/1/2,$25.00 ,Food,Breakfast at campus canteen,,Monthly Spending,,
-4,2026/1/2,$45.00 ,Food,Lunch at campus canteen,,"$5,528.50 ","$4,721.00 ","$5,068.50 "
-5,2026/1/2,$12.00 ,Transport,Bus ride,,,,
-6,2026/1/3,$38.00 ,Food,Breakfast outside campus,,,,
-7,2026/1/3,$52.00 ,Food,Lunch outside campus,,,,
-8,2026/1/3,$85.00 ,Food,Dinner takeaway,,,,
-9,2026/1/4,$25.00 ,Food,Breakfast at campus canteen,,,,
-10,2026/1/4,$48.00 ,Food,Lunch at campus canteen,,,,
-11,2026/1/4,$15.00 ,Transport,MTR,,,,
-12,2026/1/5,$36.00 ,Food,Breakfast outside campus,,,,
-13,2026/1/5,$55.00 ,Food,Lunch outside campus,,,,
-14,2026/1/5,$298.00 ,Subscription,Netflix+Spotify annual fee,,,,
-15,2026/1/5,$16.00 ,Transport,MTR,,,,
-16,2026/1/6,$25.00 ,Food,Breakfast at campus canteen,,,,
-17,2026/1/6,$42.00 ,Food,Lunch at campus canteen,,,,
-18,2026/1/6,$90.00 ,Food,Dinner takeaway,,,,
-19,2026/1/6,$12.00 ,Transport,Bus,,,,
-20,2026/1/7,$39.00 ,Food,Breakfast outside campus,,,,
-21,2026/1/7,$58.00 ,Food,Lunch outside campus,,,,
-22,2026/1/7,$138.00 ,Food,Hot pot with classmates,,,,
-23,2026/1/7,$45.00 ,Transport,Taxi short trip,,,,
-24,2026/1/8,$25.00 ,Food,Breakfast at campus canteen,,,,
-25,2026/1/8,$46.00 ,Food,Lunch at campus canteen,,,,
-26,2026/1/8,$82.00 ,Food,Dinner takeaway,,,,
-27,2026/1/8,$18.00 ,Transport,MTR,,,,
-28,2026/1/9,$37.00 ,Food,Breakfast outside campus,,,,
-29,2026/1/9,$50.00 ,Food,Lunch outside campus,,,,
-30,2026/1/9,$88.00 ,Food,Dinner takeaway,,,,
-31,2026/1/9,$10.50 ,Transport,Bus,,,,
-32,2026/1/10,$0.00 ,Other,No spending,,,,
-33,2026/1/11,$25.00 ,Food,Breakfast at campus canteen,,,,
-34,2026/1/11,$44.00 ,Food,Lunch at campus canteen,,,,
-35,2026/1/11,$15.00 ,Transport,MTR,,,,
-36,2026/1/12,$38.00 ,Food,Breakfast outside campus,,,,
-37,2026/1/12,$56.00 ,Food,Lunch outside campus,,,,
-38,2026/1/12,$95.00 ,Food,Dinner takeaway,,,,
-39,2026/1/12,$12.00 ,Transport,Bus,,,,
-40,2026/1/13,$25.00 ,Food,Breakfast at campus canteen,,,,
-41,2026/1/13,$49.00 ,Food,Lunch at campus canteen,,,,
-42,2026/1/13,$86.00 ,Food,Dinner takeaway,,,,
-43,2026/1/13,$17.00 ,Transport,MTR,,,,
-44,2026/1/14,$36.00 ,Food,Breakfast outside campus,,,,
-45,2026/1/14,$52.00 ,Food,Lunch outside campus,,,,
-46,2026/1/14,$120.00 ,Entertainment,Cinema tickets 2 persons,,,,
-47,2026/1/14,$10.50 ,Transport,Bus,,,,
-48,2026/1/15,$25.00 ,Food,Breakfast at campus canteen,,,,
-49,2026/1/15,$45.00 ,Food,Lunch at campus canteen,,,,
-50,2026/1/15,$89.00 ,Food,Dinner takeaway,,,,
-51,2026/1/15,$18.00 ,Transport,MTR,,,,
-52,2026/1/16,$39.00 ,Food,Breakfast outside campus,,,,
-53,2026/1/16,$58.00 ,Food,Lunch outside campus,,,,
-54,2026/1/16,$16.00 ,Transport,MTR,,,,
-55,2026/1/17,$25.00 ,Food,Breakfast at campus canteen,,,,
-56,2026/1/17,$42.00 ,Food,Lunch at campus canteen,,,,
-57,2026/1/17,$85.00 ,Food,Dinner takeaway,,,,
-58,2026/1/17,$12.00 ,Transport,Bus,,,,
-59,2026/1/18,$38.00 ,Food,Breakfast outside campus,,,,
-60,2026/1/18,$55.00 ,Food,Lunch outside campus,,,,
-61,2026/1/18,$128.00 ,Entertainment,Video game top-up CNY,,,,
-62,2026/1/18,$15.00 ,Transport,MTR,,,,
-63,2026/1/19,$25.00 ,Food,Breakfast at campus canteen,,,,
-64,2026/1/19,$48.00 ,Food,Lunch at campus canteen,,,,
-65,2026/1/19,$92.00 ,Food,Dinner takeaway,,,,
-66,2026/1/19,$10.50 ,Transport,Bus,,,,
-67,2026/1/20,$37.00 ,Food,Breakfast outside campus,,,,
-68,2026/1/20,$218.00 ,Food,Dinner buffet with friends,,,,
-69,2026/1/20,$58.00 ,Transport,Taxi to TST,,,,
-70,2026/1/21,$25.00 ,Food,Breakfast at campus canteen,,,,
-71,2026/1/21,$46.00 ,Food,Lunch at campus canteen,,,,
-72,2026/1/21,$88.00 ,Food,Dinner takeaway,,,,
-73,2026/1/21,$18.00 ,Transport,MTR,,,,
-74,2026/1/22,$36.00 ,Food,Breakfast outside campus,,,,
-75,2026/1/22,$50.00 ,Food,Lunch outside campus,,,,
-76,2026/1/22,$12.00 ,Transport,Bus,,,,
-77,2026/1/23,$25.00 ,Food,Breakfast at campus canteen,,,,
-78,2026/1/23,$44.00 ,Food,Lunch at campus canteen,,,,
-79,2026/1/23,$90.00 ,Food,Dinner takeaway,,,,
-80,2026/1/23,$15.00 ,Transport,MTR,,,,
-81,2026/1/24,$39.00 ,Food,Breakfast outside campus,,,,
-82,2026/1/24,$56.00 ,Food,Lunch outside campus,,,,
-83,2026/1/24,$10.50 ,Transport,Bus,,,,
-84,2026/1/25,$25.00 ,Food,Breakfast at campus canteen,,,,
-85,2026/1/25,$49.00 ,Food,Lunch at campus canteen,,,,
-86,2026/1/25,$86.00 ,Food,Dinner takeaway,,,,
-87,2026/1/25,$18.00 ,Transport,MTR,,,,
-88,2026/1/26,$38.00 ,Food,Breakfast outside campus,,,,
-89,2026/1/26,$52.00 ,Food,Lunch outside campus,,,,
-90,2026/1/26,$280.00 ,Entertainment,KTV 4 persons 3h,,,,
-91,2026/1/26,$16.00 ,Transport,MTR,,,,
-92,2026/1/27,$25.00 ,Food,Breakfast at campus canteen,,,,
-93,2026/1/27,$45.00 ,Food,Lunch at campus canteen,,,,
-94,2026/1/27,$89.00 ,Food,Dinner takeaway,,,,
-95,2026/1/27,$12.00 ,Transport,Bus,,,,
-96,2026/1/28,$37.00 ,Food,Breakfast outside campus,,,,
-97,2026/1/28,$58.00 ,Food,Lunch outside campus,,,,
-98,2026/1/28,$15.00 ,Transport,MTR,,,,
-99,2026/1/29,$25.00 ,Food,Breakfast at campus canteen,,,,
-100,2026/1/29,$42.00 ,Food,Lunch at campus canteen,,,,
-101,2026/1/29,$95.00 ,Food,Dinner takeaway,,,,
-102,2026/1/29,$10.50 ,Transport,Bus,,,,
-103,2026/1/30,$38.00 ,Food,Breakfast outside campus,,,,
-104,2026/1/30,$55.00 ,Food,Lunch outside campus,,,,
-105,2026/1/30,$18.00 ,Transport,MTR,,,,
-106,2026/1/31,$25.00 ,Food,Breakfast at campus canteen,,,,
-107,2026/1/31,$158.00 ,Food,Dinner with family,,,,
-108,2026/1/31,$42.00 ,Transport,Taxi to home,,,,
-109,2026/2/1,$36.00 ,Food,Breakfast outside campus,,,,
-110,2026/2/1,$50.00 ,Food,Lunch outside campus,,,,
-111,2026/2/1,$88.00 ,Food,Dinner takeaway,,,,
-112,2026/2/1,$15.00 ,Transport,MTR,,,,
-113,2026/2/2,$25.00 ,Food,Breakfast at campus canteen,,,,
-114,2026/2/2,$44.00 ,Food,Lunch at campus canteen,,,,
-115,2026/2/2,$12.00 ,Transport,Bus,,,,
-116,2026/2/3,$39.00 ,Food,Breakfast outside campus,,,,
-117,2026/2/3,$56.00 ,Food,Lunch outside campus,,,,
-118,2026/2/3,$92.00 ,Food,Dinner takeaway,,,,
-119,2026/2/3,$18.00 ,Transport,MTR,,,,
-120,2026/2/4,$25.00 ,Food,Breakfast at campus canteen,,,,
-121,2026/2/4,$49.00 ,Food,Lunch at campus canteen,,,,
-122,2026/2/4,$10.50 ,Transport,Bus,,,,
-123,2026/2/5,$38.00 ,Food,Breakfast outside campus,,,,
-124,2026/2/5,$52.00 ,Food,Lunch outside campus,,,,
-125,2026/2/5,$86.00 ,Food,Dinner takeaway,,,,
-126,2026/2/5,$16.00 ,Transport,MTR,,,,
-127,2026/2/6,$25.00 ,Food,Breakfast at campus canteen,,,,
-128,2026/2/6,$45.00 ,Food,Lunch at campus canteen,,,,
-129,2026/2/6,$90.00 ,Food,Dinner takeaway,,,,
-130,2026/2/6,$12.00 ,Transport,Bus,,,,
-131,2026/2/7,$37.00 ,Food,Breakfast outside campus,,,,
-132,2026/2/7,$58.00 ,Food,Lunch outside campus,,,,
-133,2026/2/7,$18.00 ,Transport,MTR,,,,
-134,2026/2/8,$198.00 ,Subscription,Gym membership monthly,,,,
-135,2026/2/8,$25.00 ,Food,Breakfast at campus canteen,,,,
-136,2026/2/8,$42.00 ,Food,Lunch at campus canteen,,,,
-137,2026/2/8,$10.50 ,Transport,Bus,,,,
-138,2026/2/9,$38.00 ,Food,Breakfast outside campus,,,,
-139,2026/2/9,$55.00 ,Food,Lunch outside campus,,,,
-140,2026/2/9,$88.00 ,Food,Dinner takeaway,,,,
-141,2026/2/9,$15.00 ,Transport,MTR,,,,
-142,2026/2/10,$25.00 ,Food,Breakfast at campus canteen,,,,
-143,2026/2/10,$48.00 ,Food,Lunch at campus canteen,,,,
-144,2026/2/10,$12.00 ,Transport,Bus,,,,
-145,2026/2/11,$36.00 ,Food,Breakfast outside campus,,,,
-146,2026/2/11,$50.00 ,Food,Lunch outside campus,,,,
-147,2026/2/11,$95.00 ,Food,Dinner takeaway,,,,
-148,2026/2/11,$18.00 ,Transport,MTR,,,,
-149,2026/2/12,$25.00 ,Food,Breakfast at campus canteen,,,,
-150,2026/2/12,$44.00 ,Food,Lunch at campus canteen,,,,
-151,2026/2/12,$10.50 ,Transport,Bus,,,,
-152,2026/2/13,$39.00 ,Food,Breakfast outside campus,,,,
-153,2026/2/13,$56.00 ,Food,Lunch outside campus,,,,
-154,2026/2/13,$86.00 ,Food,Dinner takeaway,,,,
-155,2026/2/13,$16.00 ,Transport,MTR,,,,
-156,2026/2/14,$268.00 ,Food,Valentine's dinner couple,,,,
-157,2026/2/14,$65.00 ,Transport,Taxi TST to Mong Kok,,,,
-158,2026/2/15,$0.00 ,Other,No spending,,,,
-159,2026/2/16,$25.00 ,Food,Breakfast at campus canteen,,,,
-160,2026/2/16,$49.00 ,Food,Lunch at campus canteen,,,,
-161,2026/2/16,$89.00 ,Food,Dinner takeaway,,,,
-162,2026/2/16,$12.00 ,Transport,Bus,,,,
-163,2026/2/17,$38.00 ,Food,Breakfast outside campus,,,,
-164,2026/2/17,$52.00 ,Food,Lunch outside campus,,,,
-165,2026/2/17,$18.00 ,Transport,MTR,,,,
-166,2026/2/18,$25.00 ,Food,Breakfast at campus canteen,,,,
-167,2026/2/18,$45.00 ,Food,Lunch at campus canteen,,,,
-168,2026/2/18,$92.00 ,Food,Dinner takeaway,,,,
-169,2026/2/18,$10.50 ,Transport,Bus,,,,
-170,2026/2/19,$37.00 ,Food,Breakfast outside campus,,,,
-171,2026/2/19,$58.00 ,Food,Lunch outside campus,,,,
-172,2026/2/19,$15.00 ,Transport,MTR,,,,
-173,2026/2/20,$25.00 ,Food,Breakfast at campus canteen,,,,
-174,2026/2/20,$42.00 ,Food,Lunch at campus canteen,,,,
-175,2026/2/20,$88.00 ,Food,Dinner takeaway,,,,
-176,2026/2/20,$12.00 ,Transport,Bus,,,,
-177,2026/2/21,$38.00 ,Food,Breakfast outside campus,,,,
-178,2026/2/21,$55.00 ,Food,Lunch outside campus,,,,
-179,2026/2/21,$18.00 ,Transport,MTR,,,,
-180,2026/2/22,$88.00 ,Entertainment,Video game top-up CNY,,,,
-181,2026/2/22,$25.00 ,Food,Breakfast at campus canteen,,,,
-182,2026/2/22,$48.00 ,Food,Lunch at campus canteen,,,,
-183,2026/2/23,$36.00 ,Food,Breakfast outside campus,,,,
-184,2026/2/23,$50.00 ,Food,Lunch outside campus,,,,
-185,2026/2/23,$90.00 ,Food,Dinner takeaway,,,,
-186,2026/2/23,$10.50 ,Transport,Bus,,,,
-187,2026/2/24,$25.00 ,Food,Breakfast at campus canteen,,,,
-188,2026/2/24,$44.00 ,Food,Lunch at campus canteen,,,,
-189,2026/2/24,$16.00 ,Transport,MTR,,,,
-190,2026/2/25,$39.00 ,Food,Breakfast outside campus,,,,
-191,2026/2/25,$56.00 ,Food,Lunch outside campus,,,,
-192,2026/2/25,$86.00 ,Food,Dinner takeaway,,,,
-193,2026/2/25,$12.00 ,Transport,Bus,,,,
-194,2026/2/26,$25.00 ,Food,Breakfast at campus canteen,,,,
-195,2026/2/26,$49.00 ,Food,Lunch at campus canteen,,,,
-196,2026/2/26,$18.00 ,Transport,MTR,,,,
-197,2026/2/27,$38.00 ,Food,Breakfast outside campus,,,,
-198,2026/2/27,$52.00 ,Food,Lunch outside campus,,,,
-199,2026/2/27,$95.00 ,Food,Dinner takeaway,,,,
-200,2026/2/27,$10.50 ,Transport,Bus,,,,
-201,2026/2/28,$380.00 ,Entertainment,Concert ticket,,,,
-202,2026/2/28,$25.00 ,Food,Breakfast at campus canteen,,,,
-203,2026/2/28,$158.00 ,Food,Dinner with classmates,,,,
-204,2026/3/1,$37.00 ,Food,Breakfast outside campus,,,,
-205,2026/3/1,$58.00 ,Food,Lunch outside campus,,,,
-206,2026/3/1,$88.00 ,Food,Dinner takeaway,,,,
-207,2026/3/1,$15.00 ,Transport,MTR,,,,
-208,2026/3/2,$25.00 ,Food,Breakfast at campus canteen,,,,
-209,2026/3/2,$42.00 ,Food,Lunch at campus canteen,,,,
-210,2026/3/2,$12.00 ,Transport,Bus,,,,
-211,2026/3/3,$38.00 ,Food,Breakfast outside campus,,,,
-212,2026/3/3,$55.00 ,Food,Lunch outside campus,,,,
-213,2026/3/3,$92.00 ,Food,Dinner takeaway,,,,
-214,2026/3/3,$18.00 ,Transport,MTR,,,,
-215,2026/3/4,$25.00 ,Food,Breakfast at campus canteen,,,,
-216,2026/3/4,$48.00 ,Food,Lunch at campus canteen,,,,
-217,2026/3/4,$10.50 ,Transport,Bus,,,,
-218,2026/3/5,$36.00 ,Food,Breakfast outside campus,,,,
-219,2026/3/5,$50.00 ,Food,Lunch outside campus,,,,
-220,2026/3/5,$86.00 ,Food,Dinner takeaway,,,,
-221,2026/3/5,$16.00 ,Transport,MTR,,,,
-222,2026/3/6,$25.00 ,Food,Breakfast at campus canteen,,,,
-223,2026/3/6,$45.00 ,Food,Lunch at campus canteen,,,,
-224,2026/3/6,$90.00 ,Food,Dinner takeaway,,,,
-225,2026/3/6,$12.00 ,Transport,Bus,,,,
-226,2026/3/7,$39.00 ,Food,Breakfast outside campus,,,,
-227,2026/3/7,$56.00 ,Food,Lunch outside campus,,,,
-228,2026/3/7,$18.00 ,Transport,MTR,,,,
-229,2026/3/8,$25.00 ,Food,Breakfast at campus canteen,,,,
-230,2026/3/8,$44.00 ,Food,Lunch at campus canteen,,,,
-231,2026/3/8,$88.00 ,Food,Dinner takeaway,,,,
-232,2026/3/8,$10.50 ,Transport,Bus,,,,
-233,2026/3/9,$38.00 ,Food,Breakfast outside campus,,,,
-234,2026/3/9,$52.00 ,Food,Lunch outside campus,,,,
-235,2026/3/9,$15.00 ,Transport,MTR,,,,
-236,2026/3/10,$328.00 ,Subscription,Adobe Creative Cloud monthly,,,,
-237,2026/3/10,$25.00 ,Food,Breakfast at campus canteen,,,,
-238,2026/3/10,$49.00 ,Food,Lunch at campus canteen,,,,
-239,2026/3/10,$12.00 ,Transport,Bus,,,,
-240,2026/3/11,$37.00 ,Food,Breakfast outside campus,,,,
-241,2026/3/11,$58.00 ,Food,Lunch outside campus,,,,
-242,2026/3/11,$95.00 ,Food,Dinner takeaway,,,,
-243,2026/3/11,$18.00 ,Transport,MTR,,,,
-244,2026/3/12,$25.00 ,Food,Breakfast at campus canteen,,,,
-245,2026/3/12,$42.00 ,Food,Lunch at campus canteen,,,,
-246,2026/3/12,$10.50 ,Transport,Bus,,,,
-247,2026/3/13,$38.00 ,Food,Breakfast outside campus,,,,
-248,2026/3/13,$55.00 ,Food,Lunch outside campus,,,,
-249,2026/3/13,$86.00 ,Food,Dinner takeaway,,,,
-250,2026/3/13,$16.00 ,Transport,MTR,,,,
-251,2026/3/14,$25.00 ,Food,Breakfast at campus canteen,,,,
-252,2026/3/14,$48.00 ,Food,Lunch at campus canteen,,,,
-253,2026/3/14,$12.00 ,Transport,Bus,,,,
-254,2026/3/15,$168.00 ,Entertainment,Video game top-up CNY,,,,
-255,2026/3/15,$36.00 ,Food,Breakfast outside campus,,,,
-256,2026/3/15,$50.00 ,Food,Lunch outside campus,,,,
-257,2026/3/15,$18.00 ,Transport,MTR,,,,
-258,2026/3/16,$25.00 ,Food,Breakfast at campus canteen,,,,
-259,2026/3/16,$45.00 ,Food,Lunch at campus canteen,,,,
-260,2026/3/16,$90.00 ,Food,Dinner takeaway,,,,
-261,2026/3/16,$10.50 ,Transport,Bus,,,,
-262,2026/3/17,$39.00 ,Food,Breakfast outside campus,,,,
-263,2026/3/17,$56.00 ,Food,Lunch outside campus,,,,
-264,2026/3/17,$15.00 ,Transport,MTR,,,,
-265,2026/3/18,$25.00 ,Food,Breakfast at campus canteen,,,,
-266,2026/3/18,$44.00 ,Food,Lunch at campus canteen,,,,
-267,2026/3/18,$88.00 ,Food,Dinner takeaway,,,,
-268,2026/3/18,$12.00 ,Transport,Bus,,,,
-269,2026/3/19,$38.00 ,Food,Breakfast outside campus,,,,
-270,2026/3/19,$52.00 ,Food,Lunch outside campus,,,,
-271,2026/3/19,$18.00 ,Transport,MTR,,,,
-272,2026/3/20,$0.00 ,Other,No spending,,,,
-273,2026/3/21,$25.00 ,Food,Breakfast at campus canteen,,,,
-274,2026/3/21,$49.00 ,Food,Lunch at campus canteen,,,,
-275,2026/3/21,$92.00 ,Food,Dinner takeaway,,,,
-276,2026/3/21,$10.50 ,Transport,Bus,,,,
-277,2026/3/22,$37.00 ,Food,Breakfast outside campus,,,,
-278,2026/3/22,$58.00 ,Food,Lunch outside campus,,,,
-279,2026/3/22,$16.00 ,Transport,MTR,,,,
-280,2026/3/23,$25.00 ,Food,Breakfast at campus canteen,,,,
-281,2026/3/23,$42.00 ,Food,Lunch at campus canteen,,,,
-282,2026/3/23,$86.00 ,Food,Dinner takeaway,,,,
-283,2026/3/23,$12.00 ,Transport,Bus,,,,
-284,2026/3/24,$38.00 ,Food,Breakfast outside campus,,,,
-285,2026/3/24,$55.00 ,Food,Lunch outside campus,,,,
-286,2026/3/24,$18.00 ,Transport,MTR,,,,
-287,2026/3/25,$238.00 ,Food,BBQ with classmates 10 persons,,,,
-288,2026/3/25,$52.00 ,Transport,Taxi to BBQ spot,,,,
-289,2026/3/26,$25.00 ,Food,Breakfast at campus canteen,,,,
-290,2026/3/26,$48.00 ,Food,Lunch at campus canteen,,,,
-291,2026/3/26,$10.50 ,Transport,Bus,,,,
-292,2026/3/27,$36.00 ,Food,Breakfast outside campus,,,,
-293,2026/3/27,$50.00 ,Food,Lunch outside campus,,,,
-294,2026/3/27,$95.00 ,Food,Dinner takeaway,,,,
-295,2026/3/27,$16.00 ,Transport,MTR,,,,
-296,2026/3/28,$25.00 ,Food,Breakfast at campus canteen,,,,
-297,2026/3/28,$45.00 ,Food,Lunch at campus canteen,,,,
-298,2026/3/28,$12.00 ,Transport,Bus,,,,
-299,2026/3/29,$39.00 ,Food,Breakfast outside campus,,,,
-300,2026/3/29,$56.00 ,Food,Lunch outside campus,,,,
-301,2026/3/29,$88.00 ,Food,Dinner takeaway,,,,
-302,2026/3/29,$18.00 ,Transport,MTR,,,,
-303,2026/3/30,$25.00 ,Food,Breakfast at campus canteen,,,,
-304,2026/3/30,$44.00 ,Food,Lunch at campus canteen,,,,
-305,2026/3/30,$10.50 ,Transport,Bus,,,,
-306,2026/3/31,$258.00 ,Entertainment,Board games 4 persons 4h,,,,
-307,2026/3/31,$148.00 ,Food,Dinner with friends,,,,
-308,2026/3/31,$48.00 ,Transport,Taxi to home,,,,
+transaction_id,date,amount in HKD,type,category,description
+1,2026/1/1,$188.00,expense,Food,Dinner with friends (group meal)
+2,2026/1/1,$18.00,expense,Transport,MTR campus to home
+3,2026/1/1,"$5,027.89",income,Income,Monthly allowance from parents
+4,2026/1/2,$25.00,expense,Food,Breakfast at campus canteen
+5,2026/1/2,$45.00,expense,Food,Lunch at campus canteen
+6,2026/1/2,$12.00,expense,Transport,Bus ride
+7,2026/1/3,$38.00,expense,Food,Breakfast outside campus
+8,2026/1/3,$52.00,expense,Food,Lunch outside campus
+9,2026/1/3,$85.00,expense,Food,Dinner takeaway
+10,2026/1/4,$25.00,expense,Food,Breakfast at campus canteen
+11,2026/1/4,$48.00,expense,Food,Lunch at campus canteen
+12,2026/1/4,$15.00,expense,Transport,MTR
+13,2026/1/5,$36.00,expense,Food,Breakfast outside campus
+14,2026/1/5,$55.00,expense,Food,Lunch outside campus
+15,2026/1/5,$298.00,expense,Subscription,Netflix+Spotify annual fee
+16,2026/1/5,$16.00,expense,Transport,MTR
+17,2026/1/6,$25.00,expense,Food,Breakfast at campus canteen
+18,2026/1/6,$42.00,expense,Food,Lunch at campus canteen
+19,2026/1/6,$90.00,expense,Food,Dinner takeaway
+20,2026/1/6,$12.00,expense,Transport,Bus
+21,2026/1/7,$39.00,expense,Food,Breakfast outside campus
+22,2026/1/7,$58.00,expense,Food,Lunch outside campus
+23,2026/1/7,$138.00,expense,Food,Hot pot with classmates
+24,2026/1/7,$45.00,expense,Transport,Taxi short trip
+25,2026/1/8,$25.00,expense,Food,Breakfast at campus canteen
+26,2026/1/8,$46.00,expense,Food,Lunch at campus canteen
+27,2026/1/8,$82.00,expense,Food,Dinner takeaway
+28,2026/1/8,$18.00,expense,Transport,MTR
+29,2026/1/9,$37.00,expense,Food,Breakfast outside campus
+30,2026/1/9,$50.00,expense,Food,Lunch outside campus
+31,2026/1/9,$88.00,expense,Food,Dinner takeaway
+32,2026/1/9,$10.50,expense,Transport,Bus
+33,2026/1/10,$0.00,expense,Other,No spending
+34,2026/1/11,$25.00,expense,Food,Breakfast at campus canteen
+35,2026/1/11,$44.00,expense,Food,Lunch at campus canteen
+36,2026/1/11,$15.00,expense,Transport,MTR
+37,2026/1/12,$38.00,expense,Food,Breakfast outside campus
+38,2026/1/12,$56.00,expense,Food,Lunch outside campus
+39,2026/1/12,$95.00,expense,Food,Dinner takeaway
+40,2026/1/12,$12.00,expense,Transport,Bus
+41,2026/1/13,$25.00,expense,Food,Breakfast at campus canteen
+42,2026/1/13,$49.00,expense,Food,Lunch at campus canteen
+43,2026/1/13,$86.00,expense,Food,Dinner takeaway
+44,2026/1/13,$17.00,expense,Transport,MTR
+45,2026/1/14,$36.00,expense,Food,Breakfast outside campus
+46,2026/1/14,$52.00,expense,Food,Lunch outside campus
+47,2026/1/14,$120.00,expense,Entertainment,Cinema tickets 2 persons
+48,2026/1/14,$10.50,expense,Transport,Bus
+49,2026/1/15,$25.00,expense,Food,Breakfast at campus canteen
+50,2026/1/15,$45.00,expense,Food,Lunch at campus canteen
+51,2026/1/15,$89.00,expense,Food,Dinner takeaway
+52,2026/1/15,$18.00,expense,Transport,MTR
+53,2026/1/15,"$7,848.00",income,Income,HKU scholarship Q1
+54,2026/1/16,$39.00,expense,Food,Breakfast outside campus
+55,2026/1/16,$58.00,expense,Food,Lunch outside campus
+56,2026/1/16,$16.00,expense,Transport,MTR
+57,2026/1/17,$25.00,expense,Food,Breakfast at campus canteen
+58,2026/1/17,$42.00,expense,Food,Lunch at campus canteen
+59,2026/1/17,$85.00,expense,Food,Dinner takeaway
+60,2026/1/17,$12.00,expense,Transport,Bus
+61,2026/1/18,$38.00,expense,Food,Breakfast outside campus
+62,2026/1/18,$55.00,expense,Food,Lunch outside campus
+63,2026/1/18,$128.00,expense,Entertainment,Video game top-up CNY
+64,2026/1/18,$15.00,expense,Transport,MTR
+65,2026/1/19,$25.00,expense,Food,Breakfast at campus canteen
+66,2026/1/19,$48.00,expense,Food,Lunch at campus canteen
+67,2026/1/19,$92.00,expense,Food,Dinner takeaway
+68,2026/1/19,$10.50,expense,Transport,Bus
+69,2026/1/20,$37.00,expense,Food,Breakfast outside campus
+70,2026/1/20,$218.00,expense,Food,Dinner buffet with friends
+71,2026/1/20,$58.00,expense,Transport,Taxi to TST
+72,2026/1/20,$792.80,income,Income,Part-time tutoring
+73,2026/1/21,$25.00,expense,Food,Breakfast at campus canteen
+74,2026/1/21,$46.00,expense,Food,Lunch at campus canteen
+75,2026/1/21,$88.00,expense,Food,Dinner takeaway
+76,2026/1/21,$18.00,expense,Transport,MTR
+77,2026/1/22,$36.00,expense,Food,Breakfast outside campus
+78,2026/1/22,$50.00,expense,Food,Lunch outside campus
+79,2026/1/22,$12.00,expense,Transport,Bus
+80,2026/1/23,$25.00,expense,Food,Breakfast at campus canteen
+81,2026/1/23,$44.00,expense,Food,Lunch at campus canteen
+82,2026/1/23,$90.00,expense,Food,Dinner takeaway
+83,2026/1/23,$15.00,expense,Transport,MTR
+84,2026/1/24,$39.00,expense,Food,Breakfast outside campus
+85,2026/1/24,$56.00,expense,Food,Lunch outside campus
+86,2026/1/24,$10.50,expense,Transport,Bus
+87,2026/1/25,$25.00,expense,Food,Breakfast at campus canteen
+88,2026/1/25,$49.00,expense,Food,Lunch at campus canteen
+89,2026/1/25,$86.00,expense,Food,Dinner takeaway
+90,2026/1/25,$18.00,expense,Transport,MTR
+91,2026/1/26,$38.00,expense,Food,Breakfast outside campus
+92,2026/1/26,$52.00,expense,Food,Lunch outside campus
+93,2026/1/26,$280.00,expense,Entertainment,KTV 4 persons 3h
+94,2026/1/26,$16.00,expense,Transport,MTR
+95,2026/1/27,$25.00,expense,Food,Breakfast at campus canteen
+96,2026/1/27,$45.00,expense,Food,Lunch at campus canteen
+97,2026/1/27,$89.00,expense,Food,Dinner takeaway
+98,2026/1/27,$12.00,expense,Transport,Bus
+99,2026/1/28,$37.00,expense,Food,Breakfast outside campus
+100,2026/1/28,$58.00,expense,Food,Lunch outside campus
+101,2026/1/28,$15.00,expense,Transport,MTR
+102,2026/1/29,$25.00,expense,Food,Breakfast at campus canteen
+103,2026/1/29,$42.00,expense,Food,Lunch at campus canteen
+104,2026/1/29,$95.00,expense,Food,Dinner takeaway
+105,2026/1/29,$10.50,expense,Transport,Bus
+106,2026/1/30,$38.00,expense,Food,Breakfast outside campus
+107,2026/1/30,$55.00,expense,Food,Lunch outside campus
+108,2026/1/30,$18.00,expense,Transport,MTR
+109,2026/1/31,$25.00,expense,Food,Breakfast at campus canteen
+110,2026/1/31,$158.00,expense,Food,Dinner with family
+111,2026/1/31,$42.00,expense,Transport,Taxi to home
+112,2026/2/1,$36.00,expense,Food,Breakfast outside campus
+113,2026/2/1,$50.00,expense,Food,Lunch outside campus
+114,2026/2/1,$88.00,expense,Food,Dinner takeaway
+115,2026/2/1,$15.00,expense,Transport,MTR
+116,2026/2/1,"$4,944.64",income,Income,Monthly allowance from parents
+117,2026/2/2,$25.00,expense,Food,Breakfast at campus canteen
+118,2026/2/2,$44.00,expense,Food,Lunch at campus canteen
+119,2026/2/2,$12.00,expense,Transport,Bus
+120,2026/2/3,$39.00,expense,Food,Breakfast outside campus
+121,2026/2/3,$56.00,expense,Food,Lunch outside campus
+122,2026/2/3,$92.00,expense,Food,Dinner takeaway
+123,2026/2/3,$18.00,expense,Transport,MTR
+124,2026/2/4,$25.00,expense,Food,Breakfast at campus canteen
+125,2026/2/4,$49.00,expense,Food,Lunch at campus canteen
+126,2026/2/4,$10.50,expense,Transport,Bus
+127,2026/2/5,$38.00,expense,Food,Breakfast outside campus
+128,2026/2/5,$52.00,expense,Food,Lunch outside campus
+129,2026/2/5,$86.00,expense,Food,Dinner takeaway
+130,2026/2/5,$16.00,expense,Transport,MTR
+131,2026/2/6,$25.00,expense,Food,Breakfast at campus canteen
+132,2026/2/6,$45.00,expense,Food,Lunch at campus canteen
+133,2026/2/6,$90.00,expense,Food,Dinner takeaway
+134,2026/2/6,$12.00,expense,Transport,Bus
+135,2026/2/7,$37.00,expense,Food,Breakfast outside campus
+136,2026/2/7,$58.00,expense,Food,Lunch outside campus
+137,2026/2/7,$18.00,expense,Transport,MTR
+138,2026/2/8,$198.00,expense,Subscription,Gym membership monthly
+139,2026/2/8,$25.00,expense,Food,Breakfast at campus canteen
+140,2026/2/8,$42.00,expense,Food,Lunch at campus canteen
+141,2026/2/8,$10.50,expense,Transport,Bus
+142,2026/2/9,$38.00,expense,Food,Breakfast outside campus
+143,2026/2/9,$55.00,expense,Food,Lunch outside campus
+144,2026/2/9,$88.00,expense,Food,Dinner takeaway
+145,2026/2/9,$15.00,expense,Transport,MTR
+146,2026/2/10,$25.00,expense,Food,Breakfast at campus canteen
+147,2026/2/10,$48.00,expense,Food,Lunch at campus canteen
+148,2026/2/10,$12.00,expense,Transport,Bus
+149,2026/2/11,$36.00,expense,Food,Breakfast outside campus
+150,2026/2/11,$50.00,expense,Food,Lunch outside campus
+151,2026/2/11,$95.00,expense,Food,Dinner takeaway
+152,2026/2/11,$18.00,expense,Transport,MTR
+153,2026/2/12,$25.00,expense,Food,Breakfast at campus canteen
+154,2026/2/12,$44.00,expense,Food,Lunch at campus canteen
+155,2026/2/12,$10.50,expense,Transport,Bus
+156,2026/2/12,"$1,009.46",income,Income,Campus job
+157,2026/2/13,$39.00,expense,Food,Breakfast outside campus
+158,2026/2/13,$56.00,expense,Food,Lunch outside campus
+159,2026/2/13,$86.00,expense,Food,Dinner takeaway
+160,2026/2/13,$16.00,expense,Transport,MTR
+161,2026/2/14,$268.00,expense,Food,Valentine's dinner couple
+162,2026/2/14,$65.00,expense,Transport,Taxi TST to Mong Kok
+163,2026/2/15,$0.00,expense,Other,No spending
+164,2026/2/16,$25.00,expense,Food,Breakfast at campus canteen
+165,2026/2/16,$49.00,expense,Food,Lunch at campus canteen
+166,2026/2/16,$89.00,expense,Food,Dinner takeaway
+167,2026/2/16,$12.00,expense,Transport,Bus
+168,2026/2/17,$38.00,expense,Food,Breakfast outside campus
+169,2026/2/17,$52.00,expense,Food,Lunch outside campus
+170,2026/2/17,$18.00,expense,Transport,MTR
+171,2026/2/18,$25.00,expense,Food,Breakfast at campus canteen
+172,2026/2/18,$45.00,expense,Food,Lunch at campus canteen
+173,2026/2/18,$92.00,expense,Food,Dinner takeaway
+174,2026/2/18,$10.50,expense,Transport,Bus
+175,2026/2/19,$37.00,expense,Food,Breakfast outside campus
+176,2026/2/19,$58.00,expense,Food,Lunch outside campus
+177,2026/2/19,$15.00,expense,Transport,MTR
+178,2026/2/20,$25.00,expense,Food,Breakfast at campus canteen
+179,2026/2/20,$42.00,expense,Food,Lunch at campus canteen
+180,2026/2/20,$88.00,expense,Food,Dinner takeaway
+181,2026/2/20,$12.00,expense,Transport,Bus
+182,2026/2/21,$38.00,expense,Food,Breakfast outside campus
+183,2026/2/21,$55.00,expense,Food,Lunch outside campus
+184,2026/2/21,$18.00,expense,Transport,MTR
+185,2026/2/22,$88.00,expense,Entertainment,Video game top-up CNY
+186,2026/2/22,$25.00,expense,Food,Breakfast at campus canteen
+187,2026/2/22,$48.00,expense,Food,Lunch at campus canteen
+188,2026/2/23,$36.00,expense,Food,Breakfast outside campus
+189,2026/2/23,$50.00,expense,Food,Lunch outside campus
+190,2026/2/23,$90.00,expense,Food,Dinner takeaway
+191,2026/2/23,$10.50,expense,Transport,Bus
+192,2026/2/24,$25.00,expense,Food,Breakfast at campus canteen
+193,2026/2/24,$44.00,expense,Food,Lunch at campus canteen
+194,2026/2/24,$16.00,expense,Transport,MTR
+195,2026/2/25,$39.00,expense,Food,Breakfast outside campus
+196,2026/2/25,$56.00,expense,Food,Lunch outside campus
+197,2026/2/25,$86.00,expense,Food,Dinner takeaway
+198,2026/2/25,$12.00,expense,Transport,Bus
+199,2026/2/25,$704.95,income,Income,Part-time tutoring
+200,2026/2/26,$25.00,expense,Food,Breakfast at campus canteen
+201,2026/2/26,$49.00,expense,Food,Lunch at campus canteen
+202,2026/2/26,$18.00,expense,Transport,MTR
+203,2026/2/27,$38.00,expense,Food,Breakfast outside campus
+204,2026/2/27,$52.00,expense,Food,Lunch outside campus
+205,2026/2/27,$95.00,expense,Food,Dinner takeaway
+206,2026/2/27,$10.50,expense,Transport,Bus
+207,2026/2/28,$380.00,expense,Entertainment,Concert ticket
+208,2026/2/28,$25.00,expense,Food,Breakfast at campus canteen
+209,2026/2/28,$158.00,expense,Food,Dinner with classmates
+210,2026/3/1,$37.00,expense,Food,Breakfast outside campus
+211,2026/3/1,$58.00,expense,Food,Lunch outside campus
+212,2026/3/1,$88.00,expense,Food,Dinner takeaway
+213,2026/3/1,$15.00,expense,Transport,MTR
+214,2026/3/1,"$5,078.44",income,Income,Monthly allowance from parents
+215,2026/3/2,$25.00,expense,Food,Breakfast at campus canteen
+216,2026/3/2,$42.00,expense,Food,Lunch at campus canteen
+217,2026/3/2,$12.00,expense,Transport,Bus
+218,2026/3/3,$38.00,expense,Food,Breakfast outside campus
+219,2026/3/3,$55.00,expense,Food,Lunch outside campus
+220,2026/3/3,$92.00,expense,Food,Dinner takeaway
+221,2026/3/3,$18.00,expense,Transport,MTR
+222,2026/3/4,$25.00,expense,Food,Breakfast at campus canteen
+223,2026/3/4,$48.00,expense,Food,Lunch at campus canteen
+224,2026/3/4,$10.50,expense,Transport,Bus
+225,2026/3/5,$36.00,expense,Food,Breakfast outside campus
+226,2026/3/5,$50.00,expense,Food,Lunch outside campus
+227,2026/3/5,$86.00,expense,Food,Dinner takeaway
+228,2026/3/5,$16.00,expense,Transport,MTR
+229,2026/3/6,$25.00,expense,Food,Breakfast at campus canteen
+230,2026/3/6,$45.00,expense,Food,Lunch at campus canteen
+231,2026/3/6,$90.00,expense,Food,Dinner takeaway
+232,2026/3/6,$12.00,expense,Transport,Bus
+233,2026/3/7,$39.00,expense,Food,Breakfast outside campus
+234,2026/3/7,$56.00,expense,Food,Lunch outside campus
+235,2026/3/7,$18.00,expense,Transport,MTR
+236,2026/3/8,$25.00,expense,Food,Breakfast at campus canteen
+237,2026/3/8,$44.00,expense,Food,Lunch at campus canteen
+238,2026/3/8,$88.00,expense,Food,Dinner takeaway
+239,2026/3/8,$10.50,expense,Transport,Bus
+240,2026/3/8,$885.13,income,Income,Part-time tutoring
+241,2026/3/9,$38.00,expense,Food,Breakfast outside campus
+242,2026/3/9,$52.00,expense,Food,Lunch outside campus
+243,2026/3/9,$15.00,expense,Transport,MTR
+244,2026/3/10,$328.00,expense,Subscription,Adobe Creative Cloud monthly
+245,2026/3/10,$25.00,expense,Food,Breakfast at campus canteen
+246,2026/3/10,$49.00,expense,Food,Lunch at campus canteen
+247,2026/3/10,$12.00,expense,Transport,Bus
+248,2026/3/11,$37.00,expense,Food,Breakfast outside campus
+249,2026/3/11,$58.00,expense,Food,Lunch outside campus
+250,2026/3/11,$95.00,expense,Food,Dinner takeaway
+251,2026/3/11,$18.00,expense,Transport,MTR
+252,2026/3/12,$25.00,expense,Food,Breakfast at campus canteen
+253,2026/3/12,$42.00,expense,Food,Lunch at campus canteen
+254,2026/3/12,$10.50,expense,Transport,Bus
+255,2026/3/13,$38.00,expense,Food,Breakfast outside campus
+256,2026/3/13,$55.00,expense,Food,Lunch outside campus
+257,2026/3/13,$86.00,expense,Food,Dinner takeaway
+258,2026/3/13,$16.00,expense,Transport,MTR
+259,2026/3/14,$25.00,expense,Food,Breakfast at campus canteen
+260,2026/3/14,$48.00,expense,Food,Lunch at campus canteen
+261,2026/3/14,$12.00,expense,Transport,Bus
+262,2026/3/15,$168.00,expense,Entertainment,Video game top-up CNY
+263,2026/3/15,$36.00,expense,Food,Breakfast outside campus
+264,2026/3/15,$50.00,expense,Food,Lunch outside campus
+265,2026/3/15,$18.00,expense,Transport,MTR
+266,2026/3/16,$25.00,expense,Food,Breakfast at campus canteen
+267,2026/3/16,$45.00,expense,Food,Lunch at campus canteen
+268,2026/3/16,$90.00,expense,Food,Dinner takeaway
+269,2026/3/16,$10.50,expense,Transport,Bus
+270,2026/3/17,$39.00,expense,Food,Breakfast outside campus
+271,2026/3/17,$56.00,expense,Food,Lunch outside campus
+272,2026/3/17,$15.00,expense,Transport,MTR
+273,2026/3/18,$25.00,expense,Food,Breakfast at campus canteen
+274,2026/3/18,$44.00,expense,Food,Lunch at campus canteen
+275,2026/3/18,$88.00,expense,Food,Dinner takeaway
+276,2026/3/18,$12.00,expense,Transport,Bus
+277,2026/3/19,$38.00,expense,Food,Breakfast outside campus
+278,2026/3/19,$52.00,expense,Food,Lunch outside campus
+279,2026/3/19,$18.00,expense,Transport,MTR
+280,2026/3/20,$0.00,expense,Other,No spending
+281,2026/3/21,$25.00,expense,Food,Breakfast at campus canteen
+282,2026/3/21,$49.00,expense,Food,Lunch at campus canteen
+283,2026/3/21,$92.00,expense,Food,Dinner takeaway
+284,2026/3/21,$10.50,expense,Transport,Bus
+285,2026/3/22,$37.00,expense,Food,Breakfast outside campus
+286,2026/3/22,$58.00,expense,Food,Lunch outside campus
+287,2026/3/22,$16.00,expense,Transport,MTR
+288,2026/3/23,$25.00,expense,Food,Breakfast at campus canteen
+289,2026/3/23,$42.00,expense,Food,Lunch at campus canteen
+290,2026/3/23,$86.00,expense,Food,Dinner takeaway
+291,2026/3/23,$12.00,expense,Transport,Bus
+292,2026/3/24,$38.00,expense,Food,Breakfast outside campus
+293,2026/3/24,$55.00,expense,Food,Lunch outside campus
+294,2026/3/24,$18.00,expense,Transport,MTR
+295,2026/3/25,$238.00,expense,Food,BBQ with classmates 10 persons
+296,2026/3/25,$52.00,expense,Transport,Taxi to BBQ spot
+297,2026/3/26,$25.00,expense,Food,Breakfast at campus canteen
+298,2026/3/26,$48.00,expense,Food,Lunch at campus canteen
+299,2026/3/26,$10.50,expense,Transport,Bus
+300,2026/3/27,$36.00,expense,Food,Breakfast outside campus
+301,2026/3/27,$50.00,expense,Food,Lunch outside campus
+302,2026/3/27,$95.00,expense,Food,Dinner takeaway
+303,2026/3/27,$16.00,expense,Transport,MTR
+304,2026/3/28,$25.00,expense,Food,Breakfast at campus canteen
+305,2026/3/28,$45.00,expense,Food,Lunch at campus canteen
+306,2026/3/28,$12.00,expense,Transport,Bus
+307,2026/3/29,$39.00,expense,Food,Breakfast outside campus
+308,2026/3/29,$56.00,expense,Food,Lunch outside campus
+309,2026/3/29,$88.00,expense,Food,Dinner takeaway
+310,2026/3/29,$18.00,expense,Transport,MTR
+311,2026/3/30,$25.00,expense,Food,Breakfast at campus canteen
+312,2026/3/30,$44.00,expense,Food,Lunch at campus canteen
+313,2026/3/30,$10.50,expense,Transport,Bus
+314,2026/3/31,$258.00,expense,Entertainment,Board games 4 persons 4h
+315,2026/3/31,$148.00,expense,Food,Dinner with friends
+316,2026/3/31,$48.00,expense,Transport,Taxi to home
