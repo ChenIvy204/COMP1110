@@ -493,6 +493,7 @@ class FinanceApp:
         self.exchange_rates = load_exchange_rates(EXCHANGE_RATE_FILE)
         self.avg_rate = get_average_rate(self.exchange_rates)
         self._trend_after_id: str | None = None
+        self._refresh_after_id: str | None = None
 
         self._setup_styles()
         self._build_ui()
@@ -540,7 +541,7 @@ class FinanceApp:
         ttk.Label(top, text="Account:").pack(side=tk.LEFT)
         self.account_combo = ttk.Combobox(top, textvariable=self.active_account, values=list(self.accounts.keys()), width=18, state="readonly")
         self.account_combo.pack(side=tk.LEFT, padx=6)
-        self.account_combo.bind("<<ComboboxSelected>>", lambda _: self.refresh())
+        self.account_combo.bind("<<ComboboxSelected>>", lambda _: self._schedule_refresh())
         ttk.Button(top, text="New Account", command=self.create_account).pack(side=tk.LEFT, padx=4)
         ttk.Button(top, text="Import CSV/JSON", command=self.import_file).pack(side=tk.LEFT, padx=4)
         ttk.Button(top, text="Export CSV", command=self.export_file).pack(side=tk.LEFT, padx=4)
@@ -548,7 +549,7 @@ class FinanceApp:
         ttk.Label(top, text="Month:").pack(side=tk.LEFT, padx=(16, 4))
         self.month_combo = ttk.Combobox(top, textvariable=self.month_filter, values=["All Months"], width=12, state="readonly")
         self.month_combo.pack(side=tk.LEFT)
-        self.month_combo.bind("<<ComboboxSelected>>", lambda _: self.refresh())
+        self.month_combo.bind("<<ComboboxSelected>>", lambda _: self._schedule_refresh())
 
         # Summary area
         summary_frame = ttk.Frame(self.root, padding=10, borderwidth=1, relief=tk.GROOVE)
@@ -597,7 +598,7 @@ class FinanceApp:
             state="readonly",
         )
         self.trend_category_combo.pack(side=tk.RIGHT)
-        self.trend_category_combo.bind("<<ComboboxSelected>>", lambda _: self.render_trend())
+        self.trend_category_combo.bind("<<ComboboxSelected>>", lambda _: self._schedule_render_trend())
         self.category_trend_canvas = tk.Canvas(category_frame, bg="#0f1629", highlightthickness=0, height=150)
         self.category_trend_canvas.pack(fill=tk.BOTH, expand=True, pady=(4, 0))
         self.category_trend_canvas.bind("<Configure>", lambda e: self._schedule_render_trend())
@@ -664,6 +665,20 @@ class FinanceApp:
 
     def filtered_txs(self) -> List[Transaction]:
         return [tx for _, tx in self.filtered_tx_rows()]
+
+    def _schedule_refresh(self) -> None:
+        """Debounced refresh: cancel pending and schedule a delayed full refresh."""
+        if self._refresh_after_id is not None:
+            try:
+                self.root.after_cancel(self._refresh_after_id)
+            except Exception:
+                pass
+        self._refresh_after_id = self.root.after(60, self._do_refresh)
+
+    def _do_refresh(self) -> None:
+        """Internal: actually invoke refresh after debounce wait."""
+        self._refresh_after_id = None
+        self.refresh()
 
     def refresh(self) -> None:
         visible_rows = sorted(self.filtered_tx_rows(), key=lambda item: item[1].get("date", ""), reverse=True)
