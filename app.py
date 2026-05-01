@@ -492,6 +492,7 @@ class FinanceApp:
 
         self.exchange_rates = load_exchange_rates(EXCHANGE_RATE_FILE)
         self.avg_rate = get_average_rate(self.exchange_rates)
+        self._trend_after_id: str | None = None
 
         self._setup_styles()
         self._build_ui()
@@ -581,7 +582,7 @@ class FinanceApp:
         ttk.Label(overall_frame, text="Monthly Income vs Expense").pack(anchor="w")
         self.overall_trend_canvas = tk.Canvas(overall_frame, bg="#0f1629", highlightthickness=0, height=150)
         self.overall_trend_canvas.pack(fill=tk.BOTH, expand=True, pady=(4, 0))
-        self.overall_trend_canvas.bind("<Configure>", lambda e: self.render_trend())
+        self.overall_trend_canvas.bind("<Configure>", lambda e: self._schedule_render_trend())
 
         category_frame = ttk.Frame(trend_frame)
         category_frame.pack(fill=tk.BOTH, expand=True, pady=(6, 0))
@@ -599,7 +600,7 @@ class FinanceApp:
         self.trend_category_combo.bind("<<ComboboxSelected>>", lambda _: self.render_trend())
         self.category_trend_canvas = tk.Canvas(category_frame, bg="#0f1629", highlightthickness=0, height=150)
         self.category_trend_canvas.pack(fill=tk.BOTH, expand=True, pady=(4, 0))
-        self.category_trend_canvas.bind("<Configure>", lambda e: self.render_trend())
+        self.category_trend_canvas.bind("<Configure>", lambda e: self._schedule_render_trend())
 
         # Transaction list + form container so the form stays visible on smaller windows
         lower = ttk.Frame(self.root, padding=0)
@@ -923,6 +924,20 @@ class FinanceApp:
             "category_alerts": category_alerts,
         }
 
+    def _schedule_render_trend(self) -> None:
+        """Debounced render: cancel pending and schedule a delayed redraw."""
+        if self._trend_after_id is not None:
+            try:
+                self.root.after_cancel(self._trend_after_id)
+            except Exception:
+                pass
+        self._trend_after_id = self.root.after(80, self._do_render_trend)
+
+    def _do_render_trend(self) -> None:
+        """Internal: actually invoke render_trend after debounce wait."""
+        self._trend_after_id = None
+        self.render_trend()
+
     def render_trend(self) -> None:
         txs = self.current_txs()
         self._render_overall_trend(self.overall_trend_canvas, txs)
@@ -933,7 +948,7 @@ class FinanceApp:
         W = canvas.winfo_width()
         H = canvas.winfo_height()
         if W <= 1:
-            self.root.after(50, self.render_trend)
+            self.root.after(50, self._schedule_render_trend)
             return
 
         monthly_expense: Dict[str, float] = {}
@@ -973,7 +988,7 @@ class FinanceApp:
         W = canvas.winfo_width()
         H = canvas.winfo_height()
         if W <= 1:
-            self.root.after(50, self.render_trend)
+            self.root.after(50, self._schedule_render_trend)
             return
 
         monthly_category: Dict[str, float] = {}
