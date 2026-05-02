@@ -61,6 +61,7 @@ The application runs entirely on the local machine with no cloud sync, no accoun
 | `worker_spending_2026_q1.csv` | 390 | Worker persona sample data: 384 expenses + 5 income entries (Q1 2026, HKD) |
 | `hkd2cny_2026_q1.csv` | 90 | Daily HKD-to-CNY exchange rates for Q1 2026 (90 data rows + header) |
 | `add_income_data.py` | 121 | One-shot utility script used to inject income rows and `type` column into spending CSVs |
+| `test_data_generator.py` | — | Interactive synthetic data generator for worker-style transactions with controllable anomaly rate |
 | `README.md` | — | This file |
 
 ### CSV Column Format
@@ -99,6 +100,47 @@ python3 app.py
 ```
 
 A GUI window titled "Everyday Finance · Python GUI" will appear.
+
+## Test Data Generator
+
+Use the generator when you need additional worker-style CSV data for testing import, analytics, and missing-value handling.
+
+### Run
+
+```bash
+python3 test_data_generator.py
+```
+
+The script prompts for 3 interactive inputs in order:
+
+1. `Months to generate` (integer, >= 1)
+2. `Extreme-case probability` (float, 0.0 to 1.0)
+3. `Random seed` (integer, >= 0)
+
+Press Enter on any prompt to use the default value.
+
+### Optional Arguments
+
+```bash
+python3 test_data_generator.py --start 2026-01-01 --output generated_worker_spending.csv
+```
+
+- `--start`: start date in `YYYY-MM-DD`
+- `--output`: output CSV path
+
+### Output Behavior
+
+- Output columns follow the app import format:
+
+```text
+transaction_id,date,amount in HKD,type,category,description
+```
+
+- The generator never overwrites an existing file.
+   If the target exists, it creates the next available name such as `generated_worker_spending_1.csv`, `generated_worker_spending_2.csv`, etc.
+- Higher extreme-case probability increases both:
+   - large outlier expense amounts
+   - injected missing fields (`amount`, `category`, or `date`)
 
 ### Platform Notes
 
