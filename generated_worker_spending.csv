@@ -1,0 +1,357 @@
+transaction_id,date,amount in HKD,type,category,description
+1,2026/1/1,"$22,802.75",income,Income,Monthly salary
+2,2026/1/1,$25.84,expense,Transport,MTR
+3,2026/1/1,$91.91,expense,Meals,Breakfast
+4,2026/1/1,$238.28,expense,Fun,Games and hobbies
+5,2026/1/2,$343.26,expense,Meals,Breakfast
+6,2026/1/2,$44.93,expense,Transport,MTR
+7,2026/1/2,$95.71,expense,Meals,Breakfast
+8,2026/1/2,$128.73,expense,Meals,Dinner
+9,2026/1/3,$108.30,expense,,MTR
+10,2026/1/3, $-   ,expense,Meals,Snack and drink
+11,2026/1/3,$316.96,expense,Transport,Railway
+12,2026/1/3,"$2,498.37",expense,Shopping,Supermarket shopping
+13,2026/1/4,$46.75,expense,Transport,MTR
+14,2026/1/4,$130.55,expense,Shopping,Supermarket shopping
+15,2026/1/5,"$8,732.14",expense,Accommodation,Rent (January)
+16,2026/1/5,$77.60,expense,Other,Office stationery
+17,2026/1/5,$242.13,expense,Meals,Dinner
+18,2026/1/5,$68.84,expense,Meals,Dinner
+19,2026/1/5,$748.81,expense,Shopping,Clothes and toiletries
+20,2026/1/6,$220.14,expense,Other,Utilities payment
+21,2026/1/6,$69.90,expense,Meals,Snack and drink
+22,2026/1/6,$71.94,expense,Shopping,Supermarket shopping
+23,2026/1/6,$95.84,expense,Meals,Snack and drink
+24,2026/1/6,$87.64,expense,Meals,Snack and drink
+25,2026/1/7,$107.96,expense,Meals,Breakfast
+26,2026/1/7,$81.82,expense,Shopping,Seasonal shopping
+27,2026/1/7,$18.23,expense,Transport,MTR
+28,2026/1/7,$133.79,expense,Fun,Concert ticket
+29,2026/1/7,$109.99,expense,Meals,Breakfast
+30,2026/1/8,$43.55,expense,Meals,Snack and drink
+31,2026/1/8,$30.18,expense,Transport,MTR
+32,2026/1/8,$57.56,expense,Meals,Breakfast
+33,2026/1/8,$34.48,expense,Transport,Railway
+34,2026/1/9,$77.35,expense,Shopping,Seasonal shopping
+35,2026/1/9,$97.19,expense,Meals,Snack and drink
+36,2026/1/9,$341.60,expense,Meals,Dinner
+37,2026/1/10,$84.03,expense,Transport,MTR
+38,2026/1/10,$531.35,expense,Shopping,Clothes and toiletries
+39,2026/1/10,$534.25,expense,Fun,Weekend entertainment
+40,2026/1/10,$264.22,expense,Meals,Lunch
+41,2026/1/11,$273.74,expense,Meals,Dinner
+42,2026/1/11,$254.89,expense,Transport,Bus
+43,2026/1/11,$245.62,expense,Shopping,Clothes and toiletries
+44,2026/1/12,$37.55,expense,Meals,Dinner
+45,2026/1/12,$42.81,expense,Transport,Taxi
+46,2026/1/12,$42.38,expense,Transport,Railway
+47,2026/1/12,$83.81,expense,Meals,Dinner
+48,2026/1/12,$151.16,expense,Meals,Dinner
+49,2026/1/13,$41.12,expense,Meals,Lunch
+50,2026/1/13,$232.56,expense,Fun,Concert ticket
+51,2026/1/13,$307.78,expense,Meals,Lunch
+52,2026/1/13,$24.21,expense,Transport,Taxi
+53,2026/1/14,$64.34,expense,Meals,Dinner
+54,2026/1/14,$70.08,expense,Meals,Dinner
+55,2026/1/14,$94.16,expense,Meals,Snack and drink
+56,2026/1/14,$120.72,expense,Meals,Cafe
+57,2026/1/15,"$23,635.73",income,Income,Allowance from family
+58,2026/1/15,$109.53,expense,Meals,Breakfast
+59,2026/1/15,$42.21,expense,Transport,Bus
+60,2026/1/15,$110.74,expense,Meals,Cafe
+61,2026/1/15,$662.22,expense,Meals,Cafe
+62,2026/1/15,$43.13,expense,,Bus
+63,2026/1/16,$37.10,expense,Transport,Taxi
+64,2026/1/16,$58.97,expense,Meals,Snack and drink
+65,2026/1/16,$19.33,expense,Transport,Bus
+66,2026/1/16,$20.61,expense,Transport,Bus
+67,2026/1/16,$43.17,expense,Transport,Railway
+68,2026/1/17,$166.37,expense,Transport,Bus
+69,2026/1/17,$90.72,expense,Meals,Snack and drink
+70,2026/1/17,$162.34,expense,Meals,Dinner
+71,2026/1/17,$92.40,expense,Transport,Railway
+72,2026/1/18,$854.53,expense,Other,Utilities (January)
+73,2026/1/18,$305.57,expense,Meals,Snack and drink
+74,2026/1/18,$76.29,expense,Transport,Railway
+75,2026/1/19,$45.92,expense,Shopping,Household supplies
+76,2026/1/19,$44.73,expense,Transport,Railway
+77,2026/1/19, $-   ,expense,Meals,Cafe
+78,2026/1/19,$21.00,expense,Transport,Railway
+79,2026/1/19,$65.66,expense,Meals,Cafe
+80,2026/1/20,$108.69,expense,Meals,Lunch
+81,2026/1/20,$72.76,expense,Meals,Lunch
+82,2026/1/20,$95.07,expense,Shopping,Clothes and toiletries
+83,2026/1/20,$53.81,expense,Meals,Lunch
+84,2026/1/20,$97.42,expense,Meals,Snack and drink
+85,2026/1/21,$579.97,expense,Shopping,Clothes and toiletries
+86,2026/1/21,$25.70,expense,Transport,Railway
+87,2026/1/21,$54.27,expense,Meals,Cafe
+88,2026/1/21,$34.81,expense,Transport,Railway
+89,2026/1/22,$932.74,expense,Other,Utilities (January)
+90,2026/1/22,$41.65,expense,Transport,MTR
+91,2026/1/22,$84.57,expense,Shopping,Clothes and toiletries
+92,2026/1/22,$336.88,expense,Meals,Lunch
+93,2026/1/22,$60.50,expense,Fun,KTV
+94,2026/1/22,$41.46,expense,Transport,Railway
+95,2026/1/23,$39.16,expense,Transport,Railway
+96,2026/1/23,$42.25,expense,Transport,MTR
+97,2026/1/23,$72.33,expense,Other,Office stationery
+98,2026/1/23,$44.01,expense,Shopping,Clothes and toiletries
+99,2026/1/23,$134.29,expense,Shopping,Clothes and toiletries
+100,2026/1/24,"$1,091.96",expense,Meals,Snack and drink
+101,2026/1/24,$281.97,expense,Meals,Snack and drink
+102,2026/1/25,$757.79,expense,Fun,Cinema
+103,2026/1/25,$179.33,expense,Meals,Snack and drink
+104,2026/1/25,$123.99,expense,Meals,Lunch
+105,2026/1/26,$41.14,expense,Meals,Dinner
+106,,$95.87,expense,Meals,Breakfast
+107,2026/1/26,$546.03,expense,Meals,Breakfast
+108,2026/1/26,$53.14,expense,Shopping,Supermarket shopping
+109,2026/1/26,$83.53,expense,Shopping,Clothes and toiletries
+110,2026/1/27,$76.92,expense,Meals,Snack and drink
+111,2026/1/27,$53.70,expense,Meals,Lunch
+112,2026/1/27,$25.46,expense,Transport,MTR
+113,2026/1/28,$214.20,expense,Transport,Taxi
+114,2026/1/28,$151.05,expense,Fun,Games and hobbies
+115,2026/1/28,$25.87,expense,Transport,Railway
+116,2026/1/28,$103.34,expense,Meals,Dinner
+117,2026/1/29,$69.28,expense,Meals,Dinner
+118,2026/1/29,$128.74,expense,,Lunch
+119,2026/1/29,$48.56,expense,Meals,Cafe
+120,2026/1/29,$97.75,expense,,Dinner
+121,2026/1/29,$40.47,expense,Transport,Taxi
+122,2026/1/30,$43.62,expense,Transport,Taxi
+123,2026/1/30,$63.41,expense,Meals,Cafe
+124,2026/1/30,$102.52,expense,Meals,Lunch
+125,2026/1/30,$39.37,expense,Transport,Bus
+126,2026/1/31,$271.40,expense,Meals,Cafe
+127,2026/1/31,$199.37,expense,Meals,Breakfast
+128,2026/2/1,$435.10,expense,Shopping,Seasonal shopping
+129,2026/2/1,$143.07,expense,Shopping,Household supplies
+130,2026/2/1,$94.43,expense,Transport,Taxi
+131,2026/2/2,$82.53,expense,Fun,Concert ticket
+132,2026/2/2,$28.76,expense,Transport,Bus
+133,2026/2/2,$79.18,expense,Fun,Weekend entertainment
+134,2026/2/3,$85.73,expense,Transport,Taxi
+135,2026/2/3,$67.97,expense,Meals,Dinner
+136,2026/2/3,$154.82,expense,Shopping,Clothes and toiletries
+137,2026/2/3,$35.05,expense,Meals,Snack and drink
+138,2026/2/3,$94.95,expense,Other,Phone and subscription bill
+139,2026/2/4,$83.06,expense,Meals,Dinner
+140,2026/2/4,$33.60,expense,Transport,Bus
+141,2026/2/4,$108.58,expense,Shopping,Supermarket shopping
+142,2026/2/4, $-   ,expense,Other,Unexpected small expense
+143,2026/2/5,"$9,662.48",expense,Accommodation,Rent (February)
+144,2026/2/5,$118.86,expense,Meals,Breakfast
+145,2026/2/5,$118.39,expense,Meals,Dinner
+146,2026/2/5,$20.43,expense,Transport,Bus
+147,2026/2/5,$128.30,expense,Meals,Cafe
+148,2026/2/6,$89.90,expense,Meals,Snack and drink
+149,2026/2/6,$68.30,expense,Meals,Lunch
+150,2026/2/6,$119.33,expense,Meals,Snack and drink
+151,2026/2/7,$95.01,expense,Meals,Breakfast
+152,2026/2/7,$449.26,expense,Shopping,Supermarket shopping
+153,2026/2/7,$49.71,expense,Transport,Railway
+154,2026/2/7,$84.95,expense,,Bus
+155,2026/2/8,$102.37,expense,Transport,MTR
+156,,$269.37,expense,Meals,Breakfast
+157,2026/2/9,$120.81,expense,Meals,Breakfast
+158,2026/2/9,$30.63,expense,Transport,MTR
+159,2026/2/9,$652.24,expense,Shopping,Seasonal shopping
+160,2026/2/9,$30.27,expense,Transport,MTR
+161,2026/2/9,$58.07,expense,Meals,Cafe
+162,2026/2/10,$148.49,expense,Transport,MTR
+163,2026/2/10,$36.79,expense,Transport,Railway
+164,2026/2/10,$126.41,expense,Meals,Cafe
+165,2026/2/10,$48.10,expense,Shopping,Seasonal shopping
+166,2026/2/11,$102.65,expense,Meals,Snack and drink
+167,2026/2/11,$210.75,expense,Fun,Games and hobbies
+168,,$92.30,expense,Meals,Cafe
+169,2026/2/12, $-   ,expense,Meals,Lunch
+170,2026/2/12, $-   ,expense,Meals,Snack and drink
+171,2026/2/12,$454.19,expense,Meals,Lunch
+172,2026/2/12,$37.83,expense,Transport,Taxi
+173,2026/2/13,$262.98,expense,Meals,Snack and drink
+174,2026/2/13,$61.16,expense,Shopping,Household supplies
+175,2026/2/13,$35.05,expense,Transport,Railway
+176,2026/2/13,$120.77,expense,Shopping,Household supplies
+177,2026/2/13,$41.77,expense,Meals,Lunch
+178,2026/2/14,$193.94,expense,Shopping,Supermarket shopping
+179,2026/2/14,$60.60,expense,Transport,Taxi
+180,2026/2/14,$306.50,expense,Shopping,Seasonal shopping
+181,2026/2/14,$136.30,expense,Shopping,Household supplies
+182,2026/2/15,"$19,694.02",income,Income,Monthly salary
+183,2026/2/15,$73.58,expense,Meals,Lunch
+184,2026/2/15,$427.45,expense,Shopping,Supermarket shopping
+185,2026/2/15,$243.64,expense,Other,Phone and subscription bill
+186,2026/2/16,$95.97,expense,Meals,Breakfast
+187,2026/2/16,$124.66,expense,Transport,Taxi
+188,2026/2/16,$27.77,expense,Transport,Railway
+189,2026/2/17,$55.21,expense,Meals,Lunch
+190,2026/2/17, $-   ,expense,Transport,MTR
+191,2026/2/17,$140.07,expense,Transport,Bus
+192,2026/2/17,$43.53,expense,Transport,Bus
+193,2026/2/18,$644.47,expense,Other,Utilities (February)
+194,,$50.12,expense,Meals,Dinner
+195,2026/2/18,$72.45,expense,Meals,Lunch
+196,2026/2/18,$116.01,expense,Meals,Breakfast
+197,2026/2/19,$126.48,expense,Meals,Breakfast
+198,2026/2/19,$86.93,expense,Meals,Lunch
+199,2026/2/19,$125.47,expense,Meals,Dinner
+200,2026/2/19,$53.55,expense,Other,Phone and subscription bill
+201,2026/2/20,$117.16,expense,Other,Phone and subscription bill
+202,2026/2/20,$38.78,expense,Meals,Cafe
+203,2026/2/20,$69.43,expense,Fun,Cinema
+204,2026/2/20,$233.18,expense,Other,Phone and subscription bill
+205,2026/2/20,$122.06,expense,Meals,Snack and drink
+206,2026/2/21,$63.01,expense,Transport,Bus
+207,2026/2/21,$198.35,expense,Shopping,Household supplies
+208,2026/2/21,$82.89,expense,Transport,MTR
+209,2026/2/21,$180.76,expense,Meals,Snack and drink
+210,2026/2/22,$721.42,expense,Other,Utilities (February)
+211,2026/2/22,$175.53,expense,Meals,Dinner
+212,2026/2/22,$284.38,expense,Other,Office stationery
+213,2026/2/22,$247.48,expense,Transport,MTR
+214,2026/2/23,$19.52,expense,Transport,MTR
+215,2026/2/23,$282.81,expense,Meals,Snack and drink
+216,2026/2/23,$88.21,expense,Meals,Dinner
+217,2026/2/23,$93.55,expense,Shopping,Clothes and toiletries
+218,2026/2/24,$43.75,expense,Meals,Cafe
+219,2026/2/24, $-   ,expense,Meals,Lunch
+220,2026/2/24,$90.87,expense,Meals,Snack and drink
+221,2026/2/24,$88.94,expense,Meals,Cafe
+222,2026/2/25,$42.02,expense,Transport,Bus
+223,2026/2/25,$19.08,expense,Transport,MTR
+224,2026/2/25,$129.91,expense,Meals,Cafe
+225,2026/2/25, $-   ,expense,Shopping,Household supplies
+226,2026/2/25,$110.65,expense,Shopping,Clothes and toiletries
+227,2026/2/26,$77.64,expense,Meals,Cafe
+228,2026/2/26,$110.85,expense,,Cafe
+229,2026/2/26,$52.21,expense,Meals,Lunch
+230,2026/2/26,$126.10,expense,,Seasonal shopping
+231,2026/2/27,$94.79,expense,Meals,Cafe
+232,2026/2/27,$44.74,expense,Transport,Taxi
+233,2026/2/27,$66.95,expense,Transport,Bus
+234,2026/2/27,$83.53,expense,Meals,Dinner
+235,2026/2/28,$144.25,expense,Fun,Cinema
+236,2026/2/28,$262.12,expense,Meals,Cafe
+237,2026/2/28,$490.29,expense,Other,Phone and subscription bill
+238,2026/3/1,"$25,412.44",income,Income,Performance bonus
+239,2026/3/1,$616.41,expense,Shopping,Supermarket shopping
+240,2026/3/1,$112.74,expense,Meals,Lunch
+241,2026/3/2,$93.63,expense,Meals,Breakfast
+242,2026/3/2,$106.53,expense,Meals,Cafe
+243,2026/3/2,$57.74,expense,Meals,Snack and drink
+244,2026/3/3,$60.16,expense,Meals,Lunch
+245,2026/3/3,$192.82,expense,Fun,KTV
+246,2026/3/3,$35.71,expense,Transport,Railway
+247,2026/3/3,$158.30,expense,Shopping,Household supplies
+248,2026/3/4,$81.82,expense,Meals,Cafe
+249,2026/3/4,$44.57,expense,Meals,Snack and drink
+250,2026/3/4,$312.93,expense,Fun,KTV
+251,2026/3/4,$128.04,expense,Meals,Dinner
+252,2026/3/5,"$10,251.76",expense,Accommodation,Rent (March)
+253,,$21.81,expense,Transport,MTR
+254,2026/3/5,$62.83,expense,Meals,Snack and drink
+255,2026/3/5,$34.72,expense,Transport,Railway
+256,2026/3/5,$64.07,expense,Shopping,Household supplies
+257,2026/3/5,$109.41,expense,Meals,Cafe
+258,2026/3/6,$29.02,expense,Transport,Railway
+259,2026/3/6,$92.06,expense,Meals,Snack and drink
+260,2026/3/6,$116.87,expense,Meals,Cafe
+261,2026/3/6,$121.76,expense,Meals,Snack and drink
+262,2026/3/6,$32.20,expense,Transport,MTR
+263,2026/3/7,$173.46,expense,Meals,Lunch
+264,2026/3/7,"$1,299.32",expense,Meals,Dinner
+265,2026/3/7,$355.95,expense,Shopping,Seasonal shopping
+266,2026/3/7, $-   ,expense,Meals,Lunch
+267,2026/3/8,$523.68,expense,Fun,Weekend entertainment
+268,2026/3/8,$60.92,expense,Meals,Breakfast
+269,2026/3/8,$54.88,expense,Transport,Railway
+270,2026/3/8,$541.38,expense,Shopping,Seasonal shopping
+271,2026/3/9,$41.53,expense,Transport,Taxi
+272,2026/3/9,$125.38,expense,Meals,Snack and drink
+273,2026/3/9,$42.59,expense,Transport,Railway
+274,2026/3/10,$41.87,expense,Transport,Taxi
+275,2026/3/10,$46.41,expense,Shopping,Clothes and toiletries
+276,2026/3/10,$81.49,expense,Meals,Breakfast
+277,2026/3/10,$127.39,expense,Meals,Cafe
+278,2026/3/10,$106.56,expense,Meals,Snack and drink
+279,2026/3/11,$18.29,expense,Transport,MTR
+280,2026/3/11,$706.14,expense,Other,Office stationery
+281,2026/3/11,$159.41,expense,Meals,Dinner
+282,2026/3/12,$681.41,expense,Shopping,Seasonal shopping
+283,2026/3/12,$87.61,expense,Meals,Dinner
+284,2026/3/12,$62.44,expense,Meals,Cafe
+285,2026/3/12,$130.16,expense,Fun,KTV
+286,2026/3/13,$76.95,expense,Meals,Snack and drink
+287,2026/3/13,$106.03,expense,Meals,Breakfast
+288,2026/3/13,$104.77,expense,Meals,Dinner
+289,2026/3/14,$112.04,expense,Meals,Cafe
+290,2026/3/14,$302.50,expense,Meals,Snack and drink
+291,2026/3/15,"$16,698.50",income,Income,Allowance from family
+292,2026/3/15,$239.92,expense,Meals,Breakfast
+293,2026/3/15,$115.00,expense,Meals,Lunch
+294,2026/3/16,$43.71,expense,Transport,Taxi
+295,2026/3/16,$54.89,expense,Meals,Snack and drink
+296,2026/3/16,$108.46,expense,Meals,Cafe
+297,2026/3/16,$24.17,expense,Transport,Railway
+298,2026/3/17,$758.91,expense,Shopping,Clothes and toiletries
+299,2026/3/17,$88.00,expense,Fun,Weekend entertainment
+300,2026/3/17,$128.51,expense,Meals,Cafe
+301,2026/3/17,$40.85,expense,Shopping,Household supplies
+302,2026/3/17,$134.86,expense,Shopping,Household supplies
+303,2026/3/18,$936.53,expense,Other,Utilities (March)
+304,2026/3/18,$48.60,expense,Meals,Lunch
+305,2026/3/18,$39.90,expense,Meals,Cafe
+306,2026/3/18,$43.74,expense,Transport,Bus
+307,2026/3/19,$109.92,expense,Other,Unexpected small expense
+308,2026/3/19,$150.89,expense,Shopping,Household supplies
+309,2026/3/19,$53.28,expense,Meals,Dinner
+310,2026/3/19,$36.26,expense,Transport,Taxi
+311,2026/3/19,$39.51,expense,Meals,Snack and drink
+312,2026/3/20,$39.60,expense,Transport,Railway
+313,2026/3/20,$44.24,expense,Transport,Bus
+314,2026/3/20,$33.41,expense,Transport,Railway
+315,2026/3/20,$61.26,expense,Fun,Concert ticket
+316,2026/3/20,$144.23,expense,Fun,Games and hobbies
+317,2026/3/21,$748.26,expense,Meals,Lunch
+318,2026/3/21,$169.42,expense,Fun,Weekend entertainment
+319,2026/3/21,$288.75,expense,Meals,Dinner
+320,2026/3/21,$91.79,expense,Meals,Lunch
+321,2026/3/22,$925.63,expense,Other,Utilities (March)
+322,2026/3/22,"$1,341.40",expense,Shopping,Seasonal shopping
+323,2026/3/22,$37.46,expense,Transport,Taxi
+324,2026/3/22,$90.98,expense,,Lunch
+325,2026/3/23,$203.75,expense,Meals,Breakfast
+326,2026/3/23,$114.69,expense,,Cafe
+327,2026/3/23,$79.31,expense,Meals,Lunch
+328,2026/3/23,$147.99,expense,Shopping,Seasonal shopping
+329,2026/3/24,$112.26,expense,Meals,Dinner
+330,2026/3/24,$28.36,expense,Shopping,Household supplies
+331,2026/3/24, $-   ,expense,Transport,Railway
+332,2026/3/24,$57.66,expense,Meals,Dinner
+333,2026/3/24,$59.07,expense,Meals,Snack and drink
+334,2026/3/25,$206.36,expense,Other,Unexpected small expense
+335,2026/3/25,$105.44,expense,Meals,Snack and drink
+336,2026/3/25,$69.36,expense,Meals,Cafe
+337,2026/3/25,$44.78,expense,Meals,Cafe
+338,2026/3/26,$18.25,expense,Transport,Bus
+339,2026/3/26,$48.99,expense,Meals,Lunch
+340,2026/3/26,$125.57,expense,Meals,Cafe
+341,2026/3/27,$84.33,expense,Meals,Dinner
+342,2026/3/27,$111.57,expense,Shopping,Clothes and toiletries
+343,2026/3/27,$125.78,expense,Fun,Concert ticket
+344,,$327.89,expense,Meals,Dinner
+345,2026/3/28,$178.95,expense,Transport,Taxi
+346,2026/3/28,$352.28,expense,Meals,Breakfast
+347,2026/3/29,$105.28,expense,Transport,MTR
+348,2026/3/29,$170.74,expense,,Household supplies
+349,2026/3/30,$39.76,expense,Transport,Taxi
+350,2026/3/30,$462.46,expense,Shopping,Clothes and toiletries
+351,2026/3/30,$98.01,expense,Meals,Lunch
+352,2026/3/30,$118.60,expense,Meals,Cafe
+353,2026/3/30,$57.43,expense,Meals,Lunch
+354,2026/3/31,$113.66,expense,Meals,Dinner
+355,2026/3/31,$38.28,expense,Meals,Cafe
+356,,$36.42,expense,Meals,Breakfast

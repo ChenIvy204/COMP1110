@@ -17,13 +17,15 @@ from pathlib import Path
 from typing import Iterable
 
 
-HEADER = ["transaction_id", "date", " amount_in_hkd ", "category", "description", "", "Total Spending", "", ""]
+HEADER = ["transaction_id", "date", "amount in HKD", "type", "category", "description"]
 DEFAULT_OUTPUT = Path("generated_worker_spending.csv")
 DEFAULT_START = "2026-01-01"
 DEFAULT_MONTHS = 5
 DEFAULT_EXTREME_RATE = 0.035
 DEFAULT_SEED = 42
 INCOME_CATEGORY = "Income"
+EXPENSE_TYPE = "expense"
+INCOME_TYPE = "income"
 
 
 @dataclass(frozen=True)
@@ -146,22 +148,26 @@ def apply_missing_field(rng: random.Random, row: list[str], extreme_rate: float)
 	if missing_target == "amount":
 		row[2] = " $-   "
 	elif missing_target == "category":
-		row[3] = ""
+		row[4] = ""
 	else:
 		row[1] = ""
 
 
-def build_transaction_row(tx_id: int, when: date, amount: float, category: str, description: str) -> list[str]:
+def build_transaction_row(
+	tx_id: int,
+	when: date,
+	amount: float,
+	transaction_type: str,
+	category: str,
+	description: str,
+) -> list[str]:
 	return [
 		str(tx_id),
 		when.strftime("%Y/%-m/%-d"),
 		format_amount(amount),
+		transaction_type,
 		category,
 		description,
-		"",
-		"",
-		"",
-		"",
 	]
 
 
@@ -176,7 +182,7 @@ def generate_income_rows(rng: random.Random, tx_id: int, current: date) -> list[
 	if current.day in (1, 15) and rng.random() < 0.7:
 		amount = round(rng.uniform(14000, 28000), 2)
 		description = rng.choice(("Monthly salary", "Allowance from family", "Freelance side income", "Performance bonus"))
-		rows.append(build_transaction_row(tx_id, current, amount, INCOME_CATEGORY, description))
+		rows.append(build_transaction_row(tx_id, current, amount, INCOME_TYPE, INCOME_CATEGORY, description))
 	return rows
 
 
@@ -184,10 +190,10 @@ def generate_fixed_monthly_rows(rng: random.Random, tx_id: int, current: date) -
 	rows: list[list[str]] = []
 	if current.day == 5:
 		amount = round(rng.uniform(8500, 11000), 2)
-		rows.append(build_transaction_row(tx_id, current, amount, "Accommodation", f"Rent ({current.strftime('%B')})"))
+		rows.append(build_transaction_row(tx_id, current, amount, EXPENSE_TYPE, "Accommodation", f"Rent ({current.strftime('%B')})"))
 	if current.day in (18, 22):
 		amount = round(rng.uniform(520, 980), 2)
-		rows.append(build_transaction_row(tx_id + len(rows), current, amount, "Other", f"Utilities ({current.strftime('%B')})"))
+		rows.append(build_transaction_row(tx_id + len(rows), current, amount, EXPENSE_TYPE, "Other", f"Utilities ({current.strftime('%B')})"))
 	return rows
 
 # generates the daily spending records
@@ -201,22 +207,12 @@ def generate_daily_rows(rng: random.Random, current: date, next_tx_id: int, extr
 		amount = round(rng.uniform(*amount_range), 2)
 		amount = extreme_cases(rng, amount, profile.category, extreme_rate)
 		description = rng.choice(profile.descriptions)
-		row = build_transaction_row(next_tx_id + offset, current, amount, profile.category, description)
+		row = build_transaction_row(next_tx_id + offset, current, amount, EXPENSE_TYPE, profile.category, description)
 		apply_missing_field(rng, row, extreme_rate)
 		rows.append(row)
 
 	return rows
 
-
-def monthly_summary_columns(rows: list[list[str]], month_totals: dict[str, float]) -> None:
-	if not rows:
-		return
-	rows[0][6] = format_amount(sum(month_totals.values()))
-	if len(rows) > 2:
-		rows[2][6] = "Monthly Spending"
-	if len(rows) > 3:
-		for index, month in enumerate(sorted(month_totals)[:3]):
-			rows[3][6 + index] = format_amount(month_totals[month])
 
 # assembles income, fixed bills, daily spending, and monthly totals into one CSV payload
 def generate_rows(start: date, settings: GeneratorSettings) -> list[list[str]]:
@@ -240,7 +236,7 @@ def generate_rows(start: date, settings: GeneratorSettings) -> list[list[str]]:
 
 		for row in day_rows:
 			rows.append(row)
-			if row[3] == INCOME_CATEGORY:
+			if row[3] == INCOME_TYPE:
 				continue
 			month_key = current.strftime("%Y-%m")
 			amount_text = row[2].replace("$", "").replace(",", "").strip()
@@ -248,8 +244,6 @@ def generate_rows(start: date, settings: GeneratorSettings) -> list[list[str]]:
 				continue
 			amount = float(amount_text)
 			month_totals[month_key] = month_totals.get(month_key, 0.0) + amount
-
-	monthly_summary_columns(rows, month_totals)
 	return rows
 
 
