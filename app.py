@@ -520,9 +520,12 @@ class FinanceApp:
         self.active_account: tk.StringVar = tk.StringVar(value="Case A")
         self.month_filter: tk.StringVar = tk.StringVar(value="All Months")
         self.trend_category: tk.StringVar = tk.StringVar(value="All Categories")
+        self.trend_granularity: tk.StringVar = tk.StringVar(value="Monthly")
 
         self.summary_var = tk.StringVar()
         self.forecast_var = tk.StringVar()
+        self.overall_trend_label_var = tk.StringVar(value="Monthly Income vs Expense")
+        self.category_trend_label_var = tk.StringVar(value="Category Monthly Trend")
         self.visible_tx_indices: List[int] = []
 
         self.exchange_rates = load_exchange_rates(EXCHANGE_RATE_FILE)
@@ -613,9 +616,22 @@ class FinanceApp:
         trend_frame.pack(side=tk.LEFT, fill=tk.BOTH, expand=True, padx=(6, 0))
         ttk.Label(trend_frame, text="Trends", style="Header.TLabel").pack(anchor="w")
 
+        granularity_row = ttk.Frame(trend_frame)
+        granularity_row.pack(fill=tk.X, pady=(6, 2))
+        ttk.Label(granularity_row, text="View by").pack(side=tk.LEFT)
+        self.trend_granularity_combo = ttk.Combobox(
+            granularity_row,
+            textvariable=self.trend_granularity,
+            values=["Daily", "Weekly", "Monthly"],
+            width=10,
+            state="readonly",
+        )
+        self.trend_granularity_combo.pack(side=tk.RIGHT)
+        self.trend_granularity_combo.bind("<<ComboboxSelected>>", lambda _: self._schedule_render_trend())
+
         overall_frame = ttk.Frame(trend_frame)
         overall_frame.pack(fill=tk.BOTH, expand=True, pady=(6, 6))
-        ttk.Label(overall_frame, text="Monthly Income vs Expense").pack(anchor="w")
+        ttk.Label(overall_frame, textvariable=self.overall_trend_label_var).pack(anchor="w")
         self.overall_trend_canvas = tk.Canvas(overall_frame, bg="#0f1629", highlightthickness=0, height=150)
         self.overall_trend_canvas.pack(fill=tk.BOTH, expand=True, pady=(4, 0))
         self.overall_trend_canvas.bind("<Configure>", lambda e: self._schedule_render_trend())
@@ -624,7 +640,7 @@ class FinanceApp:
         category_frame.pack(fill=tk.BOTH, expand=True, pady=(6, 0))
         category_header = ttk.Frame(category_frame)
         category_header.pack(fill=tk.X)
-        ttk.Label(category_header, text="Category Monthly Trend").pack(side=tk.LEFT, anchor="w")
+        ttk.Label(category_header, textvariable=self.category_trend_label_var).pack(side=tk.LEFT, anchor="w")
         self.trend_category_combo = ttk.Combobox(
             category_header,
             textvariable=self.trend_category,
@@ -1006,10 +1022,27 @@ class FinanceApp:
 
     def render_trend(self) -> None:
         txs = self.current_txs()
-        self._render_overall_trend(self.overall_trend_canvas, txs)
-        self._render_category_trend(self.category_trend_canvas, txs, self.trend_category.get())
+        granularity = self.trend_granularity.get()
+        self.overall_trend_label_var.set(f"{granularity} Income vs Expense")
+        self.category_trend_label_var.set(f"Category {granularity} Trend")
+        self._render_overall_trend(self.overall_trend_canvas, txs, granularity)
+        self._render_category_trend(self.category_trend_canvas, txs, self.trend_category.get(), granularity)
 
-    def _render_overall_trend(self, canvas: tk.Canvas, txs: List[Transaction]) -> None:
+    def _time_bucket_key(self, date_str: str, granularity: str) -> str:
+        try:
+            d = parse_date_safe(date_str)
+        except Exception:
+            return ""
+
+        g = granularity.lower()
+        if g == "daily":
+            return d.strftime("%Y-%m-%d")
+        if g == "weekly":
+            iso = d.isocalendar()
+            return f"{iso[0]}-W{iso[1]:02d}"
+        return d.strftime("%Y-%m")
+
+    def _render_overall_trend(self, canvas: tk.Canvas, txs: List[Transaction], granularity: str) -> None:
         canvas.delete("all")
         W = canvas.winfo_width()
         H = canvas.winfo_height()
@@ -1020,14 +1053,14 @@ class FinanceApp:
         monthly_expense: Dict[str, float] = {}
         monthly_income: Dict[str, float] = {}
         for t in txs:
-            mk = month_key(str(t.get("date", "")))
-            if not mk:
+            bucket_key = self._time_bucket_key(str(t.get("date", "")), granularity)
+            if not bucket_key:
                 continue
             amount = float(t.get("amount", 0))
             if tx_kind(t) == "income":
-                monthly_income[mk] = monthly_income.get(mk, 0) + amount
+                monthly_income[bucket_key] = monthly_income.get(bucket_key, 0) + amount
             else:
-                monthly_expense[mk] = monthly_expense.get(mk, 0) + amount
+                monthly_expense[bucket_key] = monthly_expense.get(bucket_key, 0) + amount
 
         all_months = sorted(set(monthly_expense.keys()) | set(monthly_income.keys()))
         if not all_months:
@@ -1046,10 +1079,10 @@ class FinanceApp:
                 ("Expense", exp_vals, "#ff6b6b"),
                 ("Income", inc_vals, "#3fe0a8"),
             ],
-            "Overall monthly income vs expense",
+            "Overall income vs expense",
         )
 
-    def _render_category_trend(self, canvas: tk.Canvas, txs: List[Transaction], category: str) -> None:
+    def _render_category_trend(self, canvas: tk.Canvas, txs: List[Transaction], category: str, granularity: str) -> None:
         canvas.delete("all")
         W = canvas.winfo_width()
         H = canvas.winfo_height()
@@ -1064,10 +1097,10 @@ class FinanceApp:
             normalized_category = normalize_category_name(str(t.get("category", "Other"))) or "Other"
             if normalized_category != category:
                 continue
-            mk = month_key(str(t.get("date", "")))
-            if not mk:
+            bucket_key = self._time_bucket_key(str(t.get("date", "")), granularity)
+            if not bucket_key:
                 continue
-            monthly_category[mk] = monthly_category.get(mk, 0) + float(t.get("amount", 0))
+            monthly_category[bucket_key] = monthly_category.get(bucket_key, 0) + float(t.get("amount", 0))
 
         all_months = sorted(monthly_category.keys())
         if not all_months:
@@ -1082,7 +1115,7 @@ class FinanceApp:
             H,
             all_months,
             [(category, cat_vals, "#4db8ff")],
-            f"{category} monthly trend",
+            f"{category} trend",
         )
 
     def _draw_line_chart(
