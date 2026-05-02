@@ -238,12 +238,11 @@ These scenarios are reproducible with the bundled CSV files and correspond to th
 
 Group members (COMP1110 Topic A):
 
-- [Member 1 Name] — [Cheung HonLung]
-- [Member 2 Name] — [Chen Airui]
-- [Member 3 Name] — [Huang Junran]
-- [Member 4 Name] — [Qiu Hau Yin]
+- [Cheung HonLung]
+- [Chen Airui]
+- [Huang Junran]
+- [Qiu Hau Yin]
 
-*(Replace placeholders with actual names and roles before submission.)*
 
 ## Course Information
 
